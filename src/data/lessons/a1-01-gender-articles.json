@@ -1,0 +1,178 @@
+{
+  "id": "a1-01-gender-articles",
+  "cefr": "A1",
+  "order": 1,
+  "title": "Gender & Definite Articles",
+  "germanTitle": "Genus & Artikel (der, die, das)",
+  "subtitle": "Decode masculine, feminine, neuter, and plural nouns using visual endings and color patterns.",
+  "estimatedMinutes": 3,
+  "grammarFocus": ["Nominativ", "der / die / das", "Noun Endings", "Plural"],
+  "cheatSheet": {
+    "summary": "Every German noun has one of three grammatical genders—Masculine (der), Feminine (die), or Neuter (das)—plus Plural (die). Learn every noun with its article and color tag.",
+    "keyTakeaways": [
+      "Masculine [M] (der): days, months, seasons, weather, and nouns ending in -er, -ismus, -ling.",
+      "Feminine [F] (die): nouns ending in -ung, -heit, -keit, -schaft, -tät, -ion, and ~90% of -e nouns.",
+      "Neuter [N] (das): all diminutives in -chen and -lein (even das Mädchen!), plus -ment, -um, and nominalized verbs.",
+      "Plural [PL] (die): ALL plural nouns take 'die' in the Nominative regardless of their singular gender."
+    ],
+    "patterns": [
+      { "formula": "der [M] / ein", "example": "Der Tisch ist groß.", "translation": "The table is big.", "gender": "M" },
+      { "formula": "die [F] / eine", "example": "Die Zeitung ist neu.", "translation": "The newspaper is new.", "gender": "F" },
+      { "formula": "das [N] / ein", "example": "Das Mädchen liest.", "translation": "The girl is reading.", "gender": "N" },
+      { "formula": "die [PL] / —", "example": "Die Kinder lachen.", "translation": "The children are laughing.", "gender": "PL" }
+    ],
+    "watchOut": "Gender is grammatical, not biological! 'Das Mädchen' (the girl) is Neuter [N] solely because the diminutive ending '-chen' ALWAYS forces Neuter."
+  },
+  "exercises": [
+    {
+      "id": "a1-01-e1",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "___ Zeitung liegt auf dem Tisch.",
+      "english": "The newspaper is lying on the table.",
+      "fullGerman": "Die Zeitung liegt auf dem Tisch.",
+      "options": ["Der", "Die", "Das", "Den"],
+      "correctIndex": 1,
+      "targetGender": "F",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Zeitung", "baseForm": "die Zeitung", "gender": "F", "activeCase": "Nominativ", "caseTrigger": "Subject of the sentence (Nominative) + '-ung' suffix is always Feminine [F]" },
+        { "word": "Tisch", "baseForm": "der Tisch", "gender": "M", "activeCase": "Dativ", "caseTrigger": "Static location after 'auf' (Wo?)" }
+      ],
+      "ruleTag": "Feminine Suffix -ung",
+      "rulePill": "Nouns ending in '-ung' (Zeitung, Wohnung, Übung) are 100% Feminine [F] → Nominative takes 'die'."
+    },
+    {
+      "id": "a1-01-e2",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "___ Mädchen trinkt warmen Tee.",
+      "english": "The girl drinks warm tea.",
+      "fullGerman": "Das Mädchen trinkt warmen Tee.",
+      "options": ["Der", "Die", "Das", "Ein"],
+      "correctIndex": 2,
+      "targetGender": "N",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Mädchen", "baseForm": "das Mädchen", "gender": "N", "activeCase": "Nominativ", "caseTrigger": "Subject of the sentence + '-chen' diminutive is always Neuter [N]" },
+        { "word": "Tee", "baseForm": "der Tee", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Direct object of 'trinken'" }
+      ],
+      "ruleTag": "Neuter Diminutive -chen",
+      "rulePill": "Every diminutive ending in '-chen' or '-lein' is strictly Neuter [N] → 'das Mädchen' (never 'die')."
+    },
+    {
+      "id": "a1-01-e3",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "___ Kaffee riecht heute wunderbar.",
+      "english": "The coffee smells wonderful today.",
+      "fullGerman": "Der Kaffee riecht heute wunderbar.",
+      "options": ["Der", "Die", "Das", "Die (Pl.)"],
+      "correctIndex": 0,
+      "targetGender": "M",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Kaffee", "baseForm": "der Kaffee", "gender": "M", "activeCase": "Nominativ", "caseTrigger": "Subject of the sentence (Nominative) — Masculine [M]" }
+      ],
+      "ruleTag": "Masculine Nominative",
+      "rulePill": "'Kaffee' is Masculine [M] (like most hot drinks: der Tee, der Kakao) → Nominative takes 'der'."
+    },
+    {
+      "id": "a1-01-e4",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "___ Bücher stehen im Regal.",
+      "english": "The books are standing on the shelf.",
+      "fullGerman": "Die Bücher stehen im Regal.",
+      "options": ["Der", "Das", "Die", "Den"],
+      "correctIndex": 2,
+      "targetGender": "PL",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Bücher", "baseForm": "die Bücher (sg. das Buch)", "gender": "PL", "activeCase": "Nominativ", "caseTrigger": "Plural subject → ALL plurals use 'die' in Nominative" }
+      ],
+      "ruleTag": "Plural Nominative",
+      "rulePill": "Singular 'das Buch' [N] becomes Plural 'die Bücher' [PL] → all plural nouns use 'die' in Nominative."
+    },
+    {
+      "id": "a1-01-e5",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "Hier steht ___ neue Lampe.",
+      "english": "Here stands a new lamp.",
+      "fullGerman": "Hier steht eine neue Lampe.",
+      "options": ["ein", "eine", "einen", "einem"],
+      "correctIndex": 1,
+      "targetGender": "F",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Lampe", "baseForm": "die Lampe", "gender": "F", "activeCase": "Nominativ", "caseTrigger": "Subject of 'stehen' — Feminine [F] noun ending in '-e'" }
+      ],
+      "ruleTag": "Indefinite Article (Feminine)",
+      "rulePill": "'Lampe' is Feminine [F] ('die Lampe') → the Nominative indefinite article adds '-e': 'eine'."
+    },
+    {
+      "id": "a1-01-e6",
+      "type": "spot_fix",
+      "cefr": "A1",
+      "promptHint": "One article has the wrong gender. Click it and select the fix.",
+      "sentenceTokens": ["Die", "Brötchen", "ist", "noch", "ganz", "warm."],
+      "errorTokenIndex": 0,
+      "fixOptions": ["Das", "Der", "Den", "Dem"],
+      "correctFixIndex": 0,
+      "english": "The bread roll is still quite warm.",
+      "fullGerman": "Das Brötchen ist noch ganz warm.",
+      "ruleTag": "Neuter Suffix -chen",
+      "rulePill": "'Brötchen' ends in '-chen' (singular because of 'ist') → diminutives are always Neuter [N]: 'Das Brötchen'."
+    },
+    {
+      "id": "a1-01-e7",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "___ Freiheit ist sehr wichtig.",
+      "english": "Freedom is very important.",
+      "fullGerman": "Die Freiheit ist sehr wichtig.",
+      "options": ["Der", "Das", "Die", "Dem"],
+      "correctIndex": 2,
+      "targetGender": "F",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Freiheit", "baseForm": "die Freiheit", "gender": "F", "activeCase": "Nominativ", "caseTrigger": "Nouns ending in '-heit' are always Feminine [F]" }
+      ],
+      "ruleTag": "Feminine Suffix -heit",
+      "rulePill": "Every noun ending in '-heit' or '-keit' (Freiheit, Gesundheit, Möglichkeit) is 100% Feminine [F] → 'die'."
+    },
+    {
+      "id": "a1-01-e8",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Build a clean Nominative statement (keep the verb in Position 2).",
+      "english": "The museum is open today.",
+      "fullGerman": "Das Museum ist heute geöffnet.",
+      "tokens": [
+        { "id": "t1", "text": "Das Museum", "field": "vorfeld", "gender": "N" },
+        { "id": "t2", "text": "ist", "field": "verb2" },
+        { "id": "t3", "text": "heute", "field": "mittelfeld" },
+        { "id": "t4", "text": "geöffnet.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Das Museum", "ist", "heute", "geöffnet."],
+      "ruleTag": "Neuter -um & V2 Order",
+      "rulePill": "Nouns ending in '-um' (das Museum, das Zentrum) are Neuter [N], and the finite verb 'ist' sits in Position 2."
+    },
+    {
+      "id": "a1-01-e9",
+      "type": "verb_conjugation",
+      "cefr": "A1",
+      "infinitive": "sein",
+      "tense": "Präsens",
+      "subject": "wir",
+      "prompt": "Wir ___ neue Studenten aus München.",
+      "english": "We are new students from Munich.",
+      "fullGerman": "Wir sind neue Studenten aus München.",
+      "options": ["bist", "seid", "sind", "ist"],
+      "correctIndex": 2,
+      "ruleTag": "Verb 'sein' (Present)",
+      "rulePill": "'sein' is irregular: ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind."
+    }
+  ]
+}

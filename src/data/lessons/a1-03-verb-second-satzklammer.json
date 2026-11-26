@@ -1,0 +1,173 @@
+{
+  "id": "a1-03-verb-second-satzklammer",
+  "cefr": "A1",
+  "order": 3,
+  "title": "V2 Word Order & Satzklammer",
+  "germanTitle": "Verb-Zweitstellung & Satzklammer",
+  "subtitle": "Master the signature German sentence bracket: finite verb in Position 2, infinitives & prefixes at the very end.",
+  "estimatedMinutes": 4,
+  "grammarFocus": ["V2 Rule", "Satzklammer", "Modal Verbs", "Separable Verbs"],
+  "cheatSheet": {
+    "summary": "In German main clauses, the conjugated (finite) verb ALWAYS sits in Position 2. When you add a modal verb or separable verb, the second verb piece snaps to the very end—forming a bracket (Satzklammer) around the middle.",
+    "keyTakeaways": [
+      "Position 1 (Vorfeld) holds ONE element: the subject, a time phrase ('Heute'), or a place ('In Berlin').",
+      "Position 2 (Linke Klammer) ALWAYS holds the conjugated verb—if Position 1 isn't the subject, the subject moves right behind the verb!",
+      "End Bracket (Rechte Klammer) holds infinitives (after können/müssen/wollen) or detached prefixes (an-, auf-, ein-, mit-)."
+    ],
+    "patterns": [
+      { "formula": "Time (1) + Verb (2) + Subject", "example": "Heute lerne ich Deutsch.", "translation": "Today I am learning German." },
+      { "formula": "Modal (2) + ... + Infinitive (End)", "example": "Ich muss morgen früh aufstehen.", "translation": "I have to get up early tomorrow." },
+      { "formula": "Stem (2) + ... + Prefix (End)", "example": "Sie ruft ihren Freund an.", "translation": "She calls her friend." }
+    ],
+    "watchOut": "Never put two elements before the verb! 'Heute ich gehe' is a classic English transfer error—it MUST be 'Heute gehe ich'."
+  },
+  "exercises": [
+    {
+      "id": "a1-03-e1",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Start with 'Heute' in Position 1—watch how the subject moves behind the verb!",
+      "english": "Today I am learning German.",
+      "fullGerman": "Heute lerne ich Deutsch.",
+      "tokens": [
+        { "id": "t1", "text": "Heute", "field": "vorfeld" },
+        { "id": "t2", "text": "lerne", "field": "verb2" },
+        { "id": "t3", "text": "ich", "field": "mittelfeld" },
+        { "id": "t4", "text": "Deutsch.", "field": "mittelfeld" }
+      ],
+      "correctOrder": ["Heute", "lerne", "ich", "Deutsch."],
+      "ruleTag": "V2 Inversion Rule",
+      "rulePill": "When 'Heute' takes Position 1, the finite verb 'lerne' MUST hold Position 2, pushing 'ich' into Position 3."
+    },
+    {
+      "id": "a1-03-e2",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Form the modal verb Satzklammer (conjugated modal in Pos 2, infinitive at the end).",
+      "english": "I have to work early tomorrow.",
+      "fullGerman": "Ich muss morgen früh arbeiten.",
+      "tokens": [
+        { "id": "t1", "text": "Ich", "field": "vorfeld" },
+        { "id": "t2", "text": "muss", "field": "verb2" },
+        { "id": "t3", "text": "morgen früh", "field": "mittelfeld" },
+        { "id": "t4", "text": "arbeiten.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Ich", "muss", "morgen früh", "arbeiten."],
+      "ruleTag": "Modal Verb Satzklammer",
+      "rulePill": "Modal verb 'muss' opens the bracket in Position 2; the infinitive 'arbeiten' closes the bracket at the very end."
+    },
+    {
+      "id": "a1-03-e3",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Split the separable verb 'anrufen' across the sentence bracket.",
+      "english": "She is calling her brother right now.",
+      "fullGerman": "Sie ruft jetzt ihren Bruder an.",
+      "tokens": [
+        { "id": "t1", "text": "Sie", "field": "vorfeld" },
+        { "id": "t2", "text": "ruft", "field": "verb2" },
+        { "id": "t3", "text": "jetzt", "field": "mittelfeld" },
+        { "id": "t4", "text": "ihren Bruder", "field": "mittelfeld", "gender": "M" },
+        { "id": "t5", "text": "an.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Sie", "ruft", "jetzt", "ihren Bruder", "an."],
+      "ruleTag": "Separable Prefix Bracket",
+      "rulePill": "Separable verb 'anrufen' splits: stem 'ruft' sits in Position 2 while prefix 'an' snaps to the End Bracket."
+    },
+    {
+      "id": "a1-03-e4",
+      "type": "verb_conjugation",
+      "cefr": "A1",
+      "infinitive": "können",
+      "tense": "Modal",
+      "subject": "er / sie / es",
+      "prompt": "Lisa ___ sehr gut Klavier spielen.",
+      "english": "Lisa can play the piano very well.",
+      "fullGerman": "Lisa kann sehr gut Klavier spielen.",
+      "options": ["könnt", "kannst", "kann", "können"],
+      "correctIndex": 2,
+      "ruleTag": "Modal Verb 'können'",
+      "rulePill": "In singular modal verbs, 'ich' and 'er/sie/es' are identical and take NO '-t' ending: ich kann, er/sie/es kann."
+    },
+    {
+      "id": "a1-03-e5",
+      "type": "spot_fix",
+      "cefr": "A1",
+      "promptHint": "Check the End Bracket verb form after a modal verb.",
+      "sentenceTokens": ["Wir", "wollen", "am", "Samstag", "ins", "Kino", "geht."],
+      "errorTokenIndex": 6,
+      "fixOptions": ["gehen.", "geht.", "gehst.", "gegangen."],
+      "correctFixIndex": 0,
+      "english": "We want to go to the cinema on Saturday.",
+      "fullGerman": "Wir wollen am Samstag ins Kino gehen.",
+      "ruleTag": "Modal + Infinitive",
+      "rulePill": "After modal verbs ('wollen'), the closing verb at the end MUST stay in the base infinitive ('gehen')."
+    },
+    {
+      "id": "a1-03-e6",
+      "type": "verb_conjugation",
+      "cefr": "A1",
+      "infinitive": "fahren",
+      "tense": "Präsens",
+      "subject": "er",
+      "prompt": "Am Montag ___ er mit dem Zug nach Köln.",
+      "english": "On Monday he travels to Cologne by train.",
+      "fullGerman": "Am Montag fährt er mit dem Zug nach Köln.",
+      "options": ["fahrt", "fährt", "fahre", "fahren"],
+      "correctIndex": 1,
+      "ruleTag": "Stem-Changing Verb (a → ä)",
+      "rulePill": "Strong verbs like 'fahren', 'schlafen', 'tragen' take an umlaut (a → ä) in du/er/sie/es: er fährt."
+    },
+    {
+      "id": "a1-03-e7",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Build the question with the separable verb 'einkaufen'.",
+      "english": "When are you going grocery shopping today?",
+      "fullGerman": "Wann kaufst du heute ein?",
+      "tokens": [
+        { "id": "t1", "text": "Wann", "field": "vorfeld" },
+        { "id": "t2", "text": "kaufst", "field": "verb2" },
+        { "id": "t3", "text": "du", "field": "mittelfeld" },
+        { "id": "t4", "text": "heute", "field": "mittelfeld" },
+        { "id": "t5", "text": "ein?", "field": "endklammer" }
+      ],
+      "correctOrder": ["Wann", "kaufst", "du", "heute", "ein?"],
+      "ruleTag": "W-Question + Separable Verb",
+      "rulePill": "W-word ('Wann') occupies Position 1, finite verb ('kaufst') takes Position 2, and prefix 'ein' closes the sentence."
+    },
+    {
+      "id": "a1-03-e8",
+      "type": "verb_conjugation",
+      "cefr": "A1",
+      "infinitive": "lesen",
+      "tense": "Präsens",
+      "subject": "sie (sg.)",
+      "prompt": "Abends ___ sie gern einen Krimi.",
+      "english": "In the evening she likes reading a crime novel.",
+      "fullGerman": "Abends liest sie gern einen Krimi.",
+      "options": ["lest", "liest", "lese", "lesen"],
+      "correctIndex": 1,
+      "ruleTag": "Stem-Changing Verb (e → ie)",
+      "rulePill": "'lesen' shifts e → ie in du/er/sie/es: du liest, er/sie/es liest."
+    },
+    {
+      "id": "a1-03-e9",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Start with the place phrase 'In Berlin' and keep the modal bracket intact.",
+      "english": "In Berlin you can visit many museums.",
+      "fullGerman": "In Berlin kann man viele Museen besuchen.",
+      "tokens": [
+        { "id": "t1", "text": "In Berlin", "field": "vorfeld" },
+        { "id": "t2", "text": "kann", "field": "verb2" },
+        { "id": "t3", "text": "man", "field": "mittelfeld" },
+        { "id": "t4", "text": "viele Museen", "field": "mittelfeld", "gender": "PL" },
+        { "id": "t5", "text": "besuchen.", "field": "endklammer" }
+      ],
+      "correctOrder": ["In Berlin", "kann", "man", "viele Museen", "besuchen."],
+      "ruleTag": "V2 + Modal Bracket",
+      "rulePill": "'In Berlin' fills Position 1 → 'kann' stays in Position 2 → 'besuchen' closes the End Bracket."
+    }
+  ]
+}

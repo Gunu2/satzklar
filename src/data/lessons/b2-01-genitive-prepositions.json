@@ -1,0 +1,175 @@
+{
+  "id": "b2-01-genitive-prepositions",
+  "cefr": "B2",
+  "order": 10,
+  "title": "Genitive Case & Academic Prepositions",
+  "germanTitle": "Genitiv & gehobene Präpositionen",
+  "subtitle": "Elevate your written and spoken German with 'wegen, trotz, während, aufgrund' and crisp Genitive noun endings.",
+  "estimatedMinutes": 5,
+  "grammarFocus": ["Genitiv", "des ...-(e)s", "wegen / trotz / während", "Possession"],
+  "cheatSheet": {
+    "summary": "The Genitive expresses possession ('of / 's') and powers formal, journalistic, and B2-level prepositions like wegen (because of), trotz (despite), während (during), and aufgrund (due to).",
+    "keyTakeaways": [
+      "Articles: Masculine [M] & Neuter [N] → 'des / eines' AND the noun adds '-s' or '-es' (des Mannes, des Wetters).",
+      "Feminine [F] & Plural [PL] → 'der / einer / meiner' (NO '-s' on the noun: 'trotz der Kälte', 'wegen der Probleme').",
+      "Use '-es' on short one-syllable nouns or nouns ending in s/ß/x/z (des Hauses, des Platzes); use '-s' on multi-syllable nouns (des Bahnhofs, des Urlaubs).",
+      "Adjectives after ANY Genitive article ALWAYS end in '-en' ('trotz des starken Regens')."
+    ],
+    "patterns": [
+      { "formula": "wegen + des ...s [M/N]", "example": "Wegen des Regens bleiben wir hier.", "translation": "Because of the rain we stay here.", "gender": "M" },
+      { "formula": "trotz + der [F]", "example": "Trotz der Kälte geht er joggen.", "translation": "Despite the cold he goes jogging.", "gender": "F" },
+      { "formula": "während + des ...s [N]", "example": "Während des Gesprächs schwieg er.", "translation": "During the conversation he stayed silent.", "gender": "N" },
+      { "formula": "aufgrund + der [PL]", "example": "Aufgrund der Bauarbeiten gibt es Stau.", "translation": "Due to construction there is traffic.", "gender": "PL" }
+    ],
+    "watchOut": "Colloquial speech often replaces Genitive with Dative ('wegen dem Regen'), but B2 exams, news, and professional writing require true Genitive ('wegen des Regens')!"
+  },
+  "exercises": [
+    {
+      "id": "b2-01-e1",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Wegen ___ starken Regens wurde das Spiel abgesagt.",
+      "english": "Because of the heavy rain the match was canceled.",
+      "fullGerman": "Wegen des starken Regens wurde das Spiel abgesagt.",
+      "options": ["der", "dem", "des", "den"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Regens", "baseForm": "der Regen", "gender": "M", "activeCase": "Genitiv", "caseTrigger": "Preposition 'wegen' triggers Genitive → Masculine 'der' becomes 'des' + '-s'" }
+      ],
+      "ruleTag": "Preposition 'wegen' + Genitive",
+      "rulePill": "'wegen' takes Genitive → Masculine [M] 'der Regen' transforms into 'des Regens' (article 'des' + noun '-s')."
+    },
+    {
+      "id": "b2-01-e2",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Trotz ___ großen Müdigkeit beendete sie den Bericht.",
+      "english": "Despite the great fatigue she finished the report.",
+      "fullGerman": "Trotz der großen Müdigkeit beendete sie den Bericht.",
+      "options": ["des", "der", "dem", "die"],
+      "correctIndex": 1,
+      "targetGender": "F",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Müdigkeit", "baseForm": "die Müdigkeit", "gender": "F", "activeCase": "Genitiv", "caseTrigger": "'-keit' is Feminine [F] → Genitive takes 'der' (no '-s' on noun)" }
+      ],
+      "ruleTag": "Feminine Genitive ('der')",
+      "rulePill": "'trotz' takes Genitive → Feminine [F] 'die Müdigkeit' becomes 'der Müdigkeit' (no '-s' ending on feminine nouns)."
+    },
+    {
+      "id": "b2-01-e3",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Während ___ Urlaubs habe ich drei Romane gelesen.",
+      "english": "During my vacation I read three novels.",
+      "fullGerman": "Während meines Urlaubs habe ich drei Romane gelesen.",
+      "options": ["mein", "meinen", "meinem", "meines"],
+      "correctIndex": 3,
+      "targetGender": "M",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Urlaubs", "baseForm": "der Urlaub", "gender": "M", "activeCase": "Genitiv", "caseTrigger": "Preposition 'während' triggers Genitive → Masculine takes '-es' on possessive + '-s' on noun" }
+      ],
+      "ruleTag": "Preposition 'während' + Genitive",
+      "rulePill": "'während' triggers Genitive → Masculine [M] possessive 'mein' becomes 'meines Urlaubs'."
+    },
+    {
+      "id": "b2-01-e4",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Das ist die Tasche ___ neuen Kollegen.",
+      "english": "That is the bag of the new colleague.",
+      "fullGerman": "Das ist die Tasche des neuen Kollegen.",
+      "options": ["der", "dem", "des", "den"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Kollegen", "baseForm": "der Kollege", "gender": "M", "activeCase": "Genitiv", "caseTrigger": "Possession ('of the colleague') + N-declension noun ('Kollege' → 'Kollegen')" }
+      ],
+      "ruleTag": "Genitive Possession + N-Declension",
+      "rulePill": "Possession uses Genitive ('des') and weak masculine N-declension nouns like 'der Kollege' take '-n' instead of '-s': 'des Kollegen'."
+    },
+    {
+      "id": "b2-01-e5",
+      "type": "spot_fix",
+      "cefr": "B2",
+      "promptHint": "Short Neuter nouns need a Genitive noun ending after 'des'!",
+      "sentenceTokens": ["Die", "Fenster", "des", "Haus", "sind", "frisch", "geputzt."],
+      "errorTokenIndex": 3,
+      "fixOptions": ["Hauses", "Häusern", "Hause", "Häuser"],
+      "correctFixIndex": 0,
+      "english": "The windows of the house are freshly cleaned.",
+      "fullGerman": "Die Fenster des Hauses sind frisch geputzt.",
+      "ruleTag": "Genitive Noun Ending '-es'",
+      "rulePill": "Masculine/Neuter nouns ending in s/ß/z/x (like 'das Haus') add '-es' in Genitive for pronunciation: 'des Hauses'."
+    },
+    {
+      "id": "b2-01-e6",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Anstatt ___ Autos kauft er sich ein E-Bike.",
+      "english": "Instead of a car he is buying himself an e-bike.",
+      "fullGerman": "Anstatt eines Autos kauft er sich ein E-Bike.",
+      "options": ["ein", "einem", "eines", "einer"],
+      "correctIndex": 2,
+      "targetGender": "N",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Autos", "baseForm": "das Auto", "gender": "N", "activeCase": "Genitiv", "caseTrigger": "Preposition 'anstatt' triggers Genitive → Neuter 'ein' becomes 'eines'" }
+      ],
+      "ruleTag": "Preposition 'anstatt' + Genitive",
+      "rulePill": "'anstatt / statt' takes Genitive → Neuter [N] 'ein Auto' becomes 'eines Autos'."
+    },
+    {
+      "id": "b2-01-e7",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Aufgrund ___ hohen Kosten wurde das Projekt verschoben.",
+      "english": "Due to the high costs the project was postponed.",
+      "fullGerman": "Aufgrund der hohen Kosten wurde das Projekt verschoben.",
+      "options": ["den", "des", "der", "die"],
+      "correctIndex": 2,
+      "targetGender": "PL",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Kosten", "baseForm": "die Kosten (Pl.)", "gender": "PL", "activeCase": "Genitiv", "caseTrigger": "Plural [PL] Genitive takes 'der' + adjective '-en'" }
+      ],
+      "ruleTag": "Plural Genitive ('der')",
+      "rulePill": "In Genitive Plural [PL], 'die' becomes 'der' and the adjective takes '-en': 'aufgrund der hohen Kosten'."
+    },
+    {
+      "id": "b2-01-e8",
+      "type": "satzklammer",
+      "cefr": "B2",
+      "instruction": "Front the Genitive phrase in Position 1 and keep the finite verb in Position 2.",
+      "english": "Despite the bad weather we went on a hike.",
+      "fullGerman": "Trotz des schlechten Wetters machten wir eine Wanderung.",
+      "tokens": [
+        { "id": "t1", "text": "Trotz des schlechten Wetters", "field": "vorfeld", "gender": "N" },
+        { "id": "t2", "text": "machten", "field": "verb2" },
+        { "id": "t3", "text": "wir", "field": "mittelfeld" },
+        { "id": "t4", "text": "eine Wanderung.", "field": "mittelfeld", "gender": "F" }
+      ],
+      "correctOrder": ["Trotz des schlechten Wetters", "machten", "wir", "eine Wanderung."],
+      "ruleTag": "Genitive Vorfeld + V2",
+      "rulePill": "The entire Genitive phrase fills Position 1, so the finite verb 'machten' immediately holds Position 2."
+    },
+    {
+      "id": "b2-01-e9",
+      "type": "spot_fix",
+      "cefr": "B2",
+      "promptHint": "Check the adjective ending after a Genitive article!",
+      "sentenceTokens": ["Innerhalb", "eines", "kurzer", "Zeitraums", "lernte", "er", "fließend", "Deutsch."],
+      "errorTokenIndex": 2,
+      "fixOptions": ["kurzen", "kurzes", "kurze", "kurzem"],
+      "correctFixIndex": 0,
+      "english": "Within a short period of time he learned fluent German.",
+      "fullGerman": "Innerhalb eines kurzen Zeitraums lernte er fließend Deutsch.",
+      "ruleTag": "Genitive Adjective Ending (-en)",
+      "rulePill": "After ANY Genitive article ('des, der, eines, einer'), the adjective ALWAYS ends in '-en': 'eines kurzen Zeitraums'."
+    }
+  ]
+}

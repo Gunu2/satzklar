@@ -1,0 +1,176 @@
+{
+  "id": "a2-01-dative-case",
+  "cefr": "A2",
+  "order": 4,
+  "title": "Dative Case & Dative Triggers",
+  "germanTitle": "Dativ & Dativpräpositionen",
+  "subtitle": "Spot Dative prepositions (mit, nach, aus, zu, von, bei) and Dative verbs (helfen, danken, gefallen) instantly.",
+  "estimatedMinutes": 4,
+  "grammarFocus": ["Dativ", "dem / der / den + n", "mit / zu / aus / bei", "Dative Verbs"],
+  "cheatSheet": {
+    "summary": "The Dative case marks the indirect object (the recipient: 'to/for whom?') and is automatically triggered by a fixed set of Dative prepositions and Dative verbs.",
+    "keyTakeaways": [
+      "Article shift: Masculine [M] der → dem, Neuter [N] das → dem, Feminine [F] die → der, Plural [PL] die → den (+n on the noun!).",
+      "Memory rule for Dative articles: 'M-R-M-N' (deM, deR, deM, deN).",
+      "Always-Dative prepositions: aus, bei, mit, nach, seit, von, zu, gegenüber.",
+      "Common contractions: zu + dem = zum, zu + der = zur, bei + dem = beim, von + dem = vom."
+    ],
+    "patterns": [
+      { "formula": "mit + dem [M/N]", "example": "Ich fahre mit dem Bus.", "translation": "I go by bus.", "gender": "M" },
+      { "formula": "mit + der [F]", "example": "Sie spricht mit der Chefin.", "translation": "She speaks with the boss.", "gender": "F" },
+      { "formula": "aus + dem [N]", "example": "Er kommt aus dem Haus.", "translation": "He comes out of the house.", "gender": "N" },
+      { "formula": "mit + den ...n [PL]", "example": "Wir spielen mit den Kindern.", "translation": "We play with the children.", "gender": "PL" }
+    ],
+    "watchOut": "Don't panic when you see 'der' before a feminine noun! In the Dative, Feminine [F] 'die' transforms into 'der' ('mit der Frau', 'aus der Stadt')."
+  },
+  "exercises": [
+    {
+      "id": "a2-01-e1",
+      "type": "case_drill",
+      "cefr": "A2",
+      "prompt": "Ich fahre jeden Morgen mit ___ Zug zur Arbeit.",
+      "english": "I go to work by train every morning.",
+      "fullGerman": "Ich fahre jeden Morgen mit dem Zug zur Arbeit.",
+      "options": ["der", "den", "dem", "das"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Zug", "baseForm": "der Zug", "gender": "M", "activeCase": "Dativ", "caseTrigger": "Preposition 'mit' ALWAYS triggers Dative" },
+        { "word": "Arbeit", "baseForm": "die Arbeit", "gender": "F", "activeCase": "Dativ", "caseTrigger": "'zur' = 'zu der' (Feminine Dative)" }
+      ],
+      "ruleTag": "Preposition 'mit' + Dative",
+      "rulePill": "Preposition 'mit' ALWAYS triggers Dative → Masculine [M] 'der Zug' becomes 'dem Zug'."
+    },
+    {
+      "id": "a2-01-e2",
+      "type": "case_drill",
+      "cefr": "A2",
+      "prompt": "Nach ___ Schule treffen wir uns im Café.",
+      "english": "After school we meet at the café.",
+      "fullGerman": "Nach der Schule treffen wir uns im Café.",
+      "options": ["die", "der", "dem", "den"],
+      "correctIndex": 1,
+      "targetGender": "F",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Schule", "baseForm": "die Schule", "gender": "F", "activeCase": "Dativ", "caseTrigger": "Preposition 'nach' ALWAYS triggers Dative" }
+      ],
+      "ruleTag": "Feminine Dative (die → der)",
+      "rulePill": "Preposition 'nach' triggers Dative → Feminine [F] 'die Schule' shifts to 'der Schule'."
+    },
+    {
+      "id": "a2-01-e3",
+      "type": "case_drill",
+      "cefr": "A2",
+      "prompt": "Kannst du ___ Nachbarn beim Umzug helfen?",
+      "english": "Can you help the neighbor with the move?",
+      "fullGerman": "Kannst du dem Nachbarn beim Umzug helfen?",
+      "options": ["der", "den", "dem", "des"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Nachbarn", "baseForm": "der Nachbar", "gender": "M", "activeCase": "Dativ", "caseTrigger": "Verb 'helfen' ALWAYS takes a Dative object" }
+      ],
+      "ruleTag": "Dative Verb 'helfen'",
+      "rulePill": "'helfen' is a pure Dative verb (Wem hilfst du?) → Masculine [M] 'der Nachbar' becomes 'dem Nachbarn'."
+    },
+    {
+      "id": "a2-01-e4",
+      "type": "case_drill",
+      "cefr": "A2",
+      "prompt": "Die Lehrerin erklärt ___ Kindern die Grammatik.",
+      "english": "The teacher explains the grammar to the children.",
+      "fullGerman": "Die Lehrerin erklärt den Kindern die Grammatik.",
+      "options": ["die", "der", "dem", "den"],
+      "correctIndex": 3,
+      "targetGender": "PL",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Kindern", "baseForm": "die Kinder", "gender": "PL", "activeCase": "Dativ", "caseTrigger": "Indirect recipient of 'erklären' → Dative Plural adds '-n'" },
+        { "word": "Grammatik", "baseForm": "die Grammatik", "gender": "F", "activeCase": "Akkusativ", "caseTrigger": "Direct object of 'erklären'" }
+      ],
+      "ruleTag": "Plural Dative (den + n)",
+      "rulePill": "In Dative Plural [PL], 'die' becomes 'den' AND the noun takes an extra '-n': 'den Kindern'."
+    },
+    {
+      "id": "a2-01-e5",
+      "type": "spot_fix",
+      "cefr": "A2",
+      "promptHint": "Find the wrong article after the Dative preposition 'aus'.",
+      "sentenceTokens": ["Der", "Hund", "läuft", "aus", "das", "Haus."],
+      "errorTokenIndex": 4,
+      "fixOptions": ["dem", "den", "der", "des"],
+      "correctFixIndex": 0,
+      "english": "The dog runs out of the house.",
+      "fullGerman": "Der Hund läuft aus dem Haus.",
+      "ruleTag": "Preposition 'aus' + Dative",
+      "rulePill": "Preposition 'aus' ALWAYS triggers Dative → Neuter [N] 'das Haus' changes to 'dem Haus'."
+    },
+    {
+      "id": "a2-01-e6",
+      "type": "case_drill",
+      "cefr": "A2",
+      "prompt": "Wir wohnen seit ___ Jahr in Wien.",
+      "english": "We have been living in Vienna for one year.",
+      "fullGerman": "Wir wohnen seit einem Jahr in Wien.",
+      "options": ["ein", "einen", "einem", "einer"],
+      "correctIndex": 2,
+      "targetGender": "N",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Jahr", "baseForm": "das Jahr", "gender": "N", "activeCase": "Dativ", "caseTrigger": "Preposition 'seit' ALWAYS triggers Dative" }
+      ],
+      "ruleTag": "Preposition 'seit' + Dative",
+      "rulePill": "Preposition 'seit' triggers Dative → Neuter [N] 'ein Jahr' takes '-em': 'seit einem Jahr'."
+    },
+    {
+      "id": "a2-01-e7",
+      "type": "spot_fix",
+      "cefr": "A2",
+      "promptHint": "'danken' is a classic Dative verb. Fix the pronoun!",
+      "sentenceTokens": ["Ich", "danke", "dich", "für", "die", "Hilfe!"],
+      "errorTokenIndex": 2,
+      "fixOptions": ["dir", "du", "dein", "dich"],
+      "correctFixIndex": 0,
+      "english": "I thank you for the help!",
+      "fullGerman": "Ich danke dir für die Hilfe!",
+      "ruleTag": "Dative Verb 'danken'",
+      "rulePill": "'danken' ALWAYS takes Dative (like helfen, gefallen, gehören) → use Dative 'dir', never Accusative 'dich'."
+    },
+    {
+      "id": "a2-01-e8",
+      "type": "satzklammer",
+      "cefr": "A2",
+      "instruction": "Order the sentence with Dative recipient BEFORE Accusative direct object.",
+      "english": "I give my mother a bouquet of flowers.",
+      "fullGerman": "Ich schenke meiner Mutter einen Blumenstrauß.",
+      "tokens": [
+        { "id": "t1", "text": "Ich", "field": "vorfeld" },
+        { "id": "t2", "text": "schenke", "field": "verb2" },
+        { "id": "t3", "text": "meiner Mutter", "field": "mittelfeld", "gender": "F" },
+        { "id": "t4", "text": "einen Blumenstrauß.", "field": "mittelfeld", "gender": "M" }
+      ],
+      "correctOrder": ["Ich", "schenke", "meiner Mutter", "einen Blumenstrauß."],
+      "ruleTag": "Dative Before Accusative",
+      "rulePill": "When both objects are nouns, the Dative person ('meiner Mutter' [F]) comes BEFORE the Accusative thing ('einen Blumenstrauß' [M])."
+    },
+    {
+      "id": "a2-01-e9",
+      "type": "case_drill",
+      "cefr": "A2",
+      "prompt": "Das neue Lied gefällt ___ sehr gut.",
+      "english": "I really like the new song (literally: it pleases me).",
+      "fullGerman": "Das neue Lied gefällt mir sehr gut.",
+      "options": ["ich", "mich", "mir", "mein"],
+      "correctIndex": 2,
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Lied", "baseForm": "das Lied", "gender": "N", "activeCase": "Nominativ", "caseTrigger": "The song is the subject; the listener is in the Dative!" }
+      ],
+      "ruleTag": "Dative Verb 'gefallen'",
+      "rulePill": "With 'gefallen', the thing liked is the Nominative subject and the person who likes it takes Dative: 'mir'."
+    }
+  ]
+}

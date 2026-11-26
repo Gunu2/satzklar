@@ -1,0 +1,175 @@
+{
+  "id": "a1-02-accusative-objects",
+  "cefr": "A1",
+  "order": 2,
+  "title": "Accusative Case & Direct Objects",
+  "germanTitle": "Akkusativ & direkte Objekte",
+  "subtitle": "Master the single biggest A1 shift: Masculine 'der → den' and 'ein → einen' for direct objects.",
+  "estimatedMinutes": 4,
+  "grammarFocus": ["Akkusativ", "der → den", "ein → einen", "für / ohne / durch"],
+  "cheatSheet": {
+    "summary": "The Accusative case marks the direct object—the person or thing directly receiving the action of a verb (Who or what do you buy, see, have, or read?).",
+    "keyTakeaways": [
+      "Good news: ONLY Masculine [M] changes in the Accusative! (der → den, ein → einen, mein → meinen).",
+      "Feminine [F] (die/eine), Neuter [N] (das/ein), and Plural [PL] (die) stay completely unchanged.",
+      "Always-Accusative prepositions (DOGFU): durch, ohne, gegen, für, um.",
+      "Common Accusative verbs: haben, kaufen, sehen, suchen, brauchen, trinken, essen, lesen, kennen."
+    ],
+    "patterns": [
+      { "formula": "der → den [M]", "example": "Ich kaufe den Mantel.", "translation": "I buy the coat.", "gender": "M" },
+      { "formula": "die → die [F]", "example": "Sie liest die Zeitung.", "translation": "She reads the newspaper.", "gender": "F" },
+      { "formula": "das → das [N]", "example": "Er sucht das Buch.", "translation": "He is looking for the book.", "gender": "N" },
+      { "formula": "für + Akkusativ", "example": "Das ist für meinen Vater.", "translation": "That is for my father.", "gender": "M" }
+    ],
+    "watchOut": "After 'sein' (to be) and 'werden' (to become), NEVER use Accusative—always use Nominative ('Er ist ein guter Lehrer', NOT 'einen')."
+  },
+  "exercises": [
+    {
+      "id": "a1-02-e1",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "Ich sehe ___ Hund im Park.",
+      "english": "I see the dog in the park.",
+      "fullGerman": "Ich sehe den Hund im Park.",
+      "options": ["der", "den", "dem", "das"],
+      "correctIndex": 1,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Hund", "baseForm": "der Hund", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Direct object of 'sehen' → Masculine 'der' becomes 'den'" }
+      ],
+      "ruleTag": "Masculine Accusative",
+      "rulePill": "Verb 'sehen' takes an Accusative direct object → Masculine [M] 'der Hund' changes to 'den Hund'."
+    },
+    {
+      "id": "a1-02-e2",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "Wir brauchen ___ neuen Tisch für die Küche.",
+      "english": "We need a new table for the kitchen.",
+      "fullGerman": "Wir brauchen einen neuen Tisch für die Küche.",
+      "options": ["ein", "eine", "einen", "einem"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Tisch", "baseForm": "der Tisch", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Direct object of 'brauchen' → Masculine 'ein' becomes 'einen'" },
+        { "word": "Küche", "baseForm": "die Küche", "gender": "F", "activeCase": "Akkusativ", "caseTrigger": "After preposition 'für' (Feminine stays 'die')" }
+      ],
+      "ruleTag": "Indefinite Masculine Accusative",
+      "rulePill": "'brauchen' triggers Accusative → Masculine [M] 'ein Tisch' becomes 'einen Tisch'."
+    },
+    {
+      "id": "a1-02-e3",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "Das Geschenk ist für ___ Bruder.",
+      "english": "The gift is for my brother.",
+      "fullGerman": "Das Geschenk ist für meinen Bruder.",
+      "options": ["mein", "meine", "meinen", "meinem"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Geschenk", "baseForm": "das Geschenk", "gender": "N", "activeCase": "Nominativ", "caseTrigger": "Subject of the sentence" },
+        { "word": "Bruder", "baseForm": "der Bruder", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Preposition 'für' ALWAYS triggers Accusative" }
+      ],
+      "ruleTag": "Preposition 'für' + Accusative",
+      "rulePill": "Preposition 'für' ALWAYS triggers Accusative → Masculine [M] 'mein Bruder' becomes 'meinen Bruder'."
+    },
+    {
+      "id": "a1-02-e4",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "Sie kauft ___ warmes Brot beim Bäcker.",
+      "english": "She buys a warm loaf of bread at the bakery.",
+      "fullGerman": "Sie kauft ein warmes Brot beim Bäcker.",
+      "options": ["ein", "einen", "eine", "einem"],
+      "correctIndex": 0,
+      "targetGender": "N",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Brot", "baseForm": "das Brot", "gender": "N", "activeCase": "Akkusativ", "caseTrigger": "Direct object of 'kaufen' — Neuter [N] does NOT change in Accusative" }
+      ],
+      "ruleTag": "Neuter Accusative Unchanged",
+      "rulePill": "Only Masculine changes in Accusative! Neuter [N] 'das Brot' keeps 'ein' (never 'einen')."
+    },
+    {
+      "id": "a1-02-e5",
+      "type": "spot_fix",
+      "cefr": "A1",
+      "promptHint": "Spot the Accusative preposition error and fix it.",
+      "sentenceTokens": ["Wir", "spazieren", "durch", "der", "Park."],
+      "errorTokenIndex": 3,
+      "fixOptions": ["den", "dem", "das", "die"],
+      "correctFixIndex": 0,
+      "english": "We stroll through the park.",
+      "fullGerman": "Wir spazieren durch den Park.",
+      "ruleTag": "Preposition 'durch' + Accusative",
+      "rulePill": "Preposition 'durch' ALWAYS triggers Accusative → Masculine [M] 'der Park' becomes 'den Park'."
+    },
+    {
+      "id": "a1-02-e6",
+      "type": "case_drill",
+      "cefr": "A1",
+      "prompt": "Er geht niemals ohne ___ Schlüssel aus dem Haus.",
+      "english": "He never leaves the house without the key.",
+      "fullGerman": "Er geht niemals ohne den Schlüssel aus dem Haus.",
+      "options": ["der", "den", "dem", "das"],
+      "correctIndex": 1,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Schlüssel", "baseForm": "der Schlüssel", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Preposition 'ohne' ALWAYS triggers Accusative" }
+      ],
+      "ruleTag": "Preposition 'ohne' + Accusative",
+      "rulePill": "Preposition 'ohne' ALWAYS triggers Accusative → Masculine [M] 'der Schlüssel' becomes 'den Schlüssel'."
+    },
+    {
+      "id": "a1-02-e7",
+      "type": "spot_fix",
+      "cefr": "A1",
+      "promptHint": "Watch out for the Nominative trap after 'sein'!",
+      "sentenceTokens": ["Mein", "Onkel", "ist", "einen", "Arzt."],
+      "errorTokenIndex": 3,
+      "fixOptions": ["ein", "eine", "einem", "einer"],
+      "correctFixIndex": 0,
+      "english": "My uncle is a doctor.",
+      "fullGerman": "Mein Onkel ist ein Arzt.",
+      "ruleTag": "Nominative After 'sein'",
+      "rulePill": "'sein' links subject and identity—it NEVER takes Accusative! Use Nominative Masculine [M]: 'ein Arzt'."
+    },
+    {
+      "id": "a1-02-e8",
+      "type": "satzklammer",
+      "cefr": "A1",
+      "instruction": "Assemble the sentence with the Accusative direct object.",
+      "english": "I drink a black coffee every morning.",
+      "fullGerman": "Ich trinke jeden Morgen einen schwarzen Kaffee.",
+      "tokens": [
+        { "id": "t1", "text": "Ich", "field": "vorfeld" },
+        { "id": "t2", "text": "trinke", "field": "verb2" },
+        { "id": "t3", "text": "jeden Morgen", "field": "mittelfeld" },
+        { "id": "t4", "text": "einen schwarzen Kaffee.", "field": "mittelfeld", "gender": "M" }
+      ],
+      "correctOrder": ["Ich", "trinke", "jeden Morgen", "einen schwarzen Kaffee."],
+      "ruleTag": "Accusative Time & Object",
+      "rulePill": "Definite time expressions ('jeden Morgen') and direct objects ('einen schwarzen Kaffee') both take Accusative [M] '-en'."
+    },
+    {
+      "id": "a1-02-e9",
+      "type": "verb_conjugation",
+      "cefr": "A1",
+      "infinitive": "haben",
+      "tense": "Präsens",
+      "subject": "du",
+      "prompt": "___ du heute Abend einen Termin?",
+      "english": "Do you have an appointment tonight?",
+      "fullGerman": "Hast du heute Abend einen Termin?",
+      "options": ["Habst", "Hast", "Hat", "Haben"],
+      "correctIndex": 1,
+      "ruleTag": "Irregular 'haben'",
+      "rulePill": "'haben' drops the 'b' in du/er forms: du hast, er/sie/es hat (never 'habst')."
+    }
+  ]
+}

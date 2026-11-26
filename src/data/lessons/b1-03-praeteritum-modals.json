@@ -1,0 +1,168 @@
+{
+  "id": "b1-03-praeteritum-modals",
+  "cefr": "B1",
+  "order": 9,
+  "title": "Präteritum, Reflexives & TeKaMoLo",
+  "germanTitle": "Präteritum, Reflexivverben & TeKaMoLo",
+  "subtitle": "Sound fluent in narration with Präteritum, master 'mich vs. mir', and order the middle field naturally.",
+  "estimatedMinutes": 5,
+  "grammarFocus": ["Präteritum", "Modal Past", "mich vs. mir", "TeKaMoLo Order"],
+  "cheatSheet": {
+    "summary": "Even in everyday speech, Germans prefer Präteritum for sein (war), haben (hatte), and all modal verbs (konnte, musste, wollte). Meanwhile, TeKaMoLo gives your middle field natural German rhythm.",
+    "keyTakeaways": [
+      "Modal Präteritum drops the umlaut! können → konnte, müssen → musste, dürfen → durfte, möchten → wollte.",
+      "Reflexive pronouns: Only 'ich' (mich/mir) and 'du' (dich/dir) differ between Accusative and Dative! Use Dative (mir/dir) whenever there is ANOTHER Accusative direct object ('Ich putze MIR die Zähne').",
+      "TeKaMoLo Middle Field Order: Temporal (When?) → Kausal (Why?) → Modal (How?) → Lokal (Where?)."
+    ],
+    "patterns": [
+      { "formula": "Modal Präteritum (No Umlaut)", "example": "Ich musste lange warten.", "translation": "I had to wait a long time." },
+      { "formula": "Reflexive Akk (No 2nd object)", "example": "Ich freue mich auf den Urlaub.", "translation": "I look forward to the vacation." },
+      { "formula": "Reflexive Dat (+ Akk object)", "example": "Ich wasche mir die Hände.", "translation": "I wash my hands." },
+      { "formula": "Te → Ka → Mo → Lo", "example": "Er fährt heute wegen des Wetters mit dem Bus zur Arbeit.", "translation": "Today he goes to work by bus because of the weather." }
+    ],
+    "watchOut": "In Präteritum, 1st person ('ich') and 3rd person ('er/sie/es') are ALWAYS identical: 'ich ging / er ging', 'ich konnte / sie konnte'."
+  },
+  "exercises": [
+    {
+      "id": "b1-03-e1",
+      "type": "verb_conjugation",
+      "cefr": "B1",
+      "infinitive": "müssen",
+      "tense": "Präteritum",
+      "subject": "ich",
+      "prompt": "Gestern ___ ich bis 20 Uhr im Büro bleiben.",
+      "english": "Yesterday I had to stay in the office until 8 PM.",
+      "fullGerman": "Gestern musste ich bis 20 Uhr im Büro bleiben.",
+      "options": ["müsste", "musste", "muss", "musstest"],
+      "correctIndex": 1,
+      "ruleTag": "Modal Präteritum (Drop Umlaut)",
+      "rulePill": "In Präteritum, modal verbs drop their umlaut: müssen → 'musste' ('müsste' with umlaut is Konjunktiv II!)."
+    },
+    {
+      "id": "b1-03-e2",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Ich putze ___ jeden Abend gründlich die Zähne.",
+      "english": "I brush my teeth thoroughly every evening.",
+      "fullGerman": "Ich putze mir jeden Abend gründlich die Zähne.",
+      "options": ["mich", "mir", "mein", "sich"],
+      "correctIndex": 1,
+      "nouns": [
+        { "word": "Zähne", "baseForm": "die Zähne", "gender": "PL", "activeCase": "Akkusativ", "caseTrigger": "Already occupies the Accusative object slot → reflexive shifts to Dative 'mir'" }
+      ],
+      "ruleTag": "Dative Reflexive ('mir' + Object)",
+      "rulePill": "Because 'die Zähne' is already the Accusative direct object, the reflexive pronoun switches to Dative: 'mir'."
+    },
+    {
+      "id": "b1-03-e3",
+      "type": "satzklammer",
+      "cefr": "B1",
+      "instruction": "Arrange the middle field using TeKaMoLo: Temporal → Modal → Lokal.",
+      "english": "She travels to Hamburg by train tomorrow.",
+      "fullGerman": "Sie fährt morgen mit dem Zug nach Hamburg.",
+      "tokens": [
+        { "id": "t1", "text": "Sie", "field": "vorfeld" },
+        { "id": "t2", "text": "fährt", "field": "verb2" },
+        { "id": "t3", "text": "morgen", "field": "mittelfeld" },
+        { "id": "t4", "text": "mit dem Zug", "field": "mittelfeld", "gender": "M" },
+        { "id": "t5", "text": "nach Hamburg.", "field": "mittelfeld" }
+      ],
+      "correctOrder": ["Sie", "fährt", "morgen", "mit dem Zug", "nach Hamburg."],
+      "ruleTag": "TeKaMoLo Order",
+      "rulePill": "German orders adverbials as Te(mporal: morgen) → Mo(dal: mit dem Zug) → Lo(kal: nach Hamburg)."
+    },
+    {
+      "id": "b1-03-e4",
+      "type": "verb_conjugation",
+      "cefr": "B1",
+      "infinitive": "können",
+      "tense": "Präteritum",
+      "subject": "wir",
+      "prompt": "Leider ___ wir das Konzert nicht besuchen.",
+      "english": "Unfortunately we couldn't attend the concert.",
+      "fullGerman": "Leider konnten wir das Konzert nicht besuchen.",
+      "options": ["könnten", "konnten", "kannten", "konntet"],
+      "correctIndex": 1,
+      "ruleTag": "Präteritum 'können'",
+      "rulePill": "Präteritum of 'können' loses the umlaut: wir konnten ('kannten' is from 'kennen', 'könnten' is Konjunktiv II)."
+    },
+    {
+      "id": "b1-03-e5",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Er interessiert ___ sehr für moderne Architektur.",
+      "english": "He is very interested in modern architecture.",
+      "fullGerman": "Er interessiert sich sehr für moderne Architektur.",
+      "options": ["ihn", "ihm", "sich", "sein"],
+      "correctIndex": 2,
+      "nouns": [
+        { "word": "Architektur", "baseForm": "die Architektur", "gender": "F", "activeCase": "Akkusativ", "caseTrigger": "Fixed verb + preposition: 'sich interessieren für + Akk'" }
+      ],
+      "ruleTag": "3rd-Person Reflexive 'sich'",
+      "rulePill": "In 3rd person (er/sie/es/sie/Sie), the reflexive pronoun is ALWAYS 'sich' in both Accusative and Dative."
+    },
+    {
+      "id": "b1-03-e6",
+      "type": "verb_conjugation",
+      "cefr": "B1",
+      "infinitive": "gehen",
+      "tense": "Präteritum",
+      "subject": "er",
+      "prompt": "Nach dem Abendessen ___ er noch kurz spazieren.",
+      "english": "After dinner he still went for a short walk.",
+      "fullGerman": "Nach dem Abendessen ging er noch kurz spazieren.",
+      "options": ["gehte", "ging", "gegangen", "gingt"],
+      "correctIndex": 1,
+      "ruleTag": "Strong Präteritum 'gehen'",
+      "rulePill": "'gehen' is strong in Präteritum: ich/er ging, du gingst, wir gingen (no '-t' in 3rd person singular!)."
+    },
+    {
+      "id": "b1-03-e7",
+      "type": "spot_fix",
+      "cefr": "B1",
+      "promptHint": "Watch the reflexive pronoun when there is an Accusative object ('einen Mantel')!",
+      "sentenceTokens": ["Ich", "kaufe", "mich", "einen", "neuen", "Wintermantel."],
+      "errorTokenIndex": 2,
+      "fixOptions": ["mir", "mich", "mein", "sich"],
+      "correctFixIndex": 0,
+      "english": "I'm buying myself a new winter coat.",
+      "fullGerman": "Ich kaufe mir einen neuen Wintermantel.",
+      "ruleTag": "Dative Reflexive ('mir')",
+      "rulePill": "'einen neuen Wintermantel' is the direct object (Akk), so 'for myself' takes Dative: 'Ich kaufe mir...'."
+    },
+    {
+      "id": "b1-03-e8",
+      "type": "satzklammer",
+      "cefr": "B1",
+      "instruction": "Order all four TeKaMoLo elements cleanly inside the sentence!",
+      "english": "Today I'm happily cycling to work because of the sun.",
+      "fullGerman": "Ich fahre heute wegen der Sonne gern ins Büro.",
+      "tokens": [
+        { "id": "t1", "text": "Ich", "field": "vorfeld" },
+        { "id": "t2", "text": "fahre", "field": "verb2" },
+        { "id": "t3", "text": "heute", "field": "mittelfeld" },
+        { "id": "t4", "text": "wegen der Sonne", "field": "mittelfeld", "gender": "F" },
+        { "id": "t5", "text": "gern", "field": "mittelfeld" },
+        { "id": "t6", "text": "ins Büro.", "field": "mittelfeld", "gender": "N" }
+      ],
+      "correctOrder": ["Ich", "fahre", "heute", "wegen der Sonne", "gern", "ins Büro."],
+      "ruleTag": "Full TeKaMoLo Sequence",
+      "rulePill": "Te(heute) → Ka(wegen der Sonne) → Mo(gern) → Lo(ins Büro) creates effortless native-like German flow."
+    },
+    {
+      "id": "b1-03-e9",
+      "type": "verb_conjugation",
+      "cefr": "B1",
+      "infinitive": "geben",
+      "tense": "Präteritum",
+      "subject": "es",
+      "prompt": "Früher ___ es in dieser Straße ein kleines Kino.",
+      "english": "Back then there was a small cinema on this street.",
+      "fullGerman": "Früher gab es in dieser Straße ein kleines Kino.",
+      "options": ["gebte", "gibt", "gab", "gegeben"],
+      "correctIndex": 2,
+      "ruleTag": "Präteritum 'es gab'",
+      "rulePill": "'es gibt' (there is) becomes 'es gab' (there was) in Präteritum—one of the highest-frequency German past forms."
+    }
+  ]
+}

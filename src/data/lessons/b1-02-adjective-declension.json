@@ -1,0 +1,174 @@
+{
+  "id": "b1-02-adjective-declension",
+  "cefr": "B1",
+  "order": 8,
+  "title": "Adjective Endings Across Cases",
+  "germanTitle": "Adjektivdeklination (Stark, Schwach, Gemischt)",
+  "subtitle": "Stop guessing '-e, -en, -er, -es'—use the Signal Rule to nail adjective endings in seconds.",
+  "estimatedMinutes": 5,
+  "grammarFocus": ["Weak (-e / -en)", "Mixed (ein guter)", "Strong (guter Wein)", "Signal Rule"],
+  "cheatSheet": {
+    "summary": "Adjective endings aren't random! German wants ONE clear gender/case signal before the noun. If the article already carries the signal (der, dem, den), the adjective relaxes to '-e' or '-en'. If the article doesn't (ein, mein, or no article), the adjective carries the signal itself!",
+    "keyTakeaways": [
+      "After definite articles (der/die/das): ONLY '-e' or '-en'! Use '-e' in Nominative singular (der gute, die gute, das gute) and Accusative F/N. Everywhere else (all Dative, Genitive, Plural, Masculine Akk): '-en'!",
+      "After ein/kein/mein: Only 3 slots lack a signal—Nom [M] ('ein guter Mann'), Nom [N] ('ein gutes Buch'), Akk [N] ('ein gutes Buch'). Everywhere else behaves just like definite articles ('-e' or '-en')!",
+      "With NO article (Strong): The adjective steals the definite article's ending (kaltes Wasser, frischer Kaffee, mit gutem Wein)."
+    ],
+    "patterns": [
+      { "formula": "der / die / das + -e", "example": "Der kleine Hund schläft.", "translation": "The little dog is sleeping.", "gender": "M" },
+      { "formula": "ALL Dative & Plural → -en", "example": "Mit dem neuen Fahrrad.", "translation": "With the new bicycle.", "gender": "N" },
+      { "formula": "ein + -er [M] / -es [N]", "example": "Das ist ein interessantes Buch.", "translation": "That is an interesting book.", "gender": "N" },
+      { "formula": "No article → Signal on Adj", "example": "Ich trinke kalten Saft.", "translation": "I drink cold juice.", "gender": "M" }
+    ],
+    "watchOut": "Plural ALWAYS takes '-en' after ANY article (die, meine, keine, alle): 'die neuen Schuhe', 'meine guten Freunde'!"
+  },
+  "exercises": [
+    {
+      "id": "b1-02-e1",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Das ist ein ___ Vorschlag!",
+      "english": "That is a great suggestion!",
+      "fullGerman": "Das ist ein toller Vorschlag!",
+      "options": ["tolle", "tollen", "toller", "tolles"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Vorschlag", "baseForm": "der Vorschlag", "gender": "M", "activeCase": "Nominativ", "caseTrigger": "'ein' has no gender ending → adjective must show Masculine '-er'" }
+      ],
+      "ruleTag": "Mixed Declension (Nom M → -er)",
+      "rulePill": "'ein' doesn't reveal Masculine [M] gender, so the adjective picks up the '-er' signal from 'der': 'ein toller Vorschlag'."
+    },
+    {
+      "id": "b1-02-e2",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Ich trage heute meinen ___ Mantel.",
+      "english": "Today I am wearing my warm coat.",
+      "fullGerman": "Ich trage heute meinen warmen Mantel.",
+      "options": ["warmer", "warme", "warmen", "warmes"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Mantel", "baseForm": "der Mantel", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Masculine Accusative ('meinen') ALWAYS triggers '-en'" }
+      ],
+      "ruleTag": "Masculine Accusative → -en",
+      "rulePill": "Masculine [M] Accusative ALWAYS takes '-en' on the adjective: 'den/einen/meinen warmen Mantel'."
+    },
+    {
+      "id": "b1-02-e3",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Sie wohnt in einer ___ Wohnung im Zentrum.",
+      "english": "She lives in a bright apartment in the center.",
+      "fullGerman": "Sie wohnt in einer hellen Wohnung im Zentrum.",
+      "options": ["helle", "heller", "hellen", "helles"],
+      "correctIndex": 2,
+      "targetGender": "F",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Wohnung", "baseForm": "die Wohnung", "gender": "F", "activeCase": "Dativ", "caseTrigger": "Static location (Wo?) → Dative after 'einer' ALWAYS takes '-en'" }
+      ],
+      "ruleTag": "Dative After Article → -en",
+      "rulePill": "Golden shortcut: After ANY article in the Dative (dem, der, einem, einer), the adjective ALWAYS ends in '-en'!"
+    },
+    {
+      "id": "b1-02-e4",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Wir kaufen ein ___ Fahrrad für unseren Sohn.",
+      "english": "We are buying a blue bicycle for our son.",
+      "fullGerman": "Wir kaufen ein blaues Fahrrad für unseren Sohn.",
+      "options": ["blaue", "blauen", "blauer", "blaues"],
+      "correctIndex": 3,
+      "targetGender": "N",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Fahrrad", "baseForm": "das Fahrrad", "gender": "N", "activeCase": "Akkusativ", "caseTrigger": "'ein' lacks Neuter signal → adjective takes '-es' from 'das'" }
+      ],
+      "ruleTag": "Mixed Declension (Akk N → -es)",
+      "rulePill": "'ein' has no Neuter [N] ending in Nominative or Accusative, so the adjective shows '-es': 'ein blaues Fahrrad'."
+    },
+    {
+      "id": "b1-02-e5",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Zum Frühstück trinke ich gern ___ Kaffee.",
+      "english": "For breakfast I like drinking fresh coffee.",
+      "fullGerman": "Zum Frühstück trinke ich gern frischen Kaffee.",
+      "options": ["frischer", "frische", "frischen", "frischem"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Kaffee", "baseForm": "der Kaffee", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "No article (Strong) → adjective copies 'den' → '-en'" }
+      ],
+      "ruleTag": "Strong Declension (No Article)",
+      "rulePill": "With no article, the adjective copies the definite article ending directly: Accusative [M] 'den' → 'frischen Kaffee'."
+    },
+    {
+      "id": "b1-02-e6",
+      "type": "spot_fix",
+      "cefr": "B1",
+      "promptHint": "Check the plural adjective ending after 'die'!",
+      "sentenceTokens": ["Die", "neue", "Nachbarn", "sind", "sehr", "freundlich."],
+      "errorTokenIndex": 1,
+      "fixOptions": ["neuen", "neuer", "neues", "neuem"],
+      "correctFixIndex": 0,
+      "english": "The new neighbors are very friendly.",
+      "fullGerman": "Die neuen Nachbarn sind sehr freundlich.",
+      "ruleTag": "Plural After Article → -en",
+      "rulePill": "After 'die', 'meine', or 'keine' in Plural [PL], the adjective ALWAYS ends in '-en': 'Die neuen Nachbarn'."
+    },
+    {
+      "id": "b1-02-e7",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Der ___ Zug fährt pünktlich um acht Uhr ab.",
+      "english": "The fast train departs on time at eight o'clock.",
+      "fullGerman": "Der schnelle Zug fährt pünktlich um acht Uhr ab.",
+      "options": ["schneller", "schnelle", "schnellen", "schnelles"],
+      "correctIndex": 1,
+      "targetGender": "M",
+      "targetCase": "Nominativ",
+      "nouns": [
+        { "word": "Zug", "baseForm": "der Zug", "gender": "M", "activeCase": "Nominativ", "caseTrigger": "'der' ALREADY carries the '-er' signal → adjective takes '-e'" }
+      ],
+      "ruleTag": "Weak Declension (der + -e)",
+      "rulePill": "Because 'der' already displays the Masculine [M] '-er' signal, the adjective relaxes to '-e': 'Der schnelle Zug'."
+    },
+    {
+      "id": "b1-02-e8",
+      "type": "spot_fix",
+      "cefr": "B1",
+      "promptHint": "No article before 'Wasser'—what signal does Neuter Nominative need?",
+      "sentenceTokens": ["Kalt", "Wasser", "erfrischt", "im", "Sommer", "sofort."],
+      "errorTokenIndex": 0,
+      "fixOptions": ["Kaltes", "Kalter", "Kalten", "Kaltem"],
+      "correctFixIndex": 0,
+      "english": "Cold water refreshes immediately in summer.",
+      "fullGerman": "Kaltes Wasser erfrischt im Sommer sofort.",
+      "ruleTag": "Strong Neuter Nominative (-es)",
+      "rulePill": "Without an article, Neuter [N] 'das Wasser' passes its '-s' ending directly onto the adjective: 'Kaltes Wasser'."
+    },
+    {
+      "id": "b1-02-e9",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Er serviert die Suppe mit ___ Brot.",
+      "english": "He serves the soup with fresh bread.",
+      "fullGerman": "Er serviert die Suppe mit frischem Brot.",
+      "options": ["frisches", "frischen", "frischem", "frischer"],
+      "correctIndex": 2,
+      "targetGender": "N",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Brot", "baseForm": "das Brot", "gender": "N", "activeCase": "Dativ", "caseTrigger": "'mit' triggers Dative + no article → adjective copies 'dem' → '-em'" }
+      ],
+      "ruleTag": "Strong Dative (-em)",
+      "rulePill": "'mit' triggers Dative and there is no article → Neuter [N] 'dem' transfers '-em' onto the adjective: 'mit frischem Brot'."
+    }
+  ]
+}

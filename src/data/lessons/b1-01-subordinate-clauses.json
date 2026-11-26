@@ -1,0 +1,170 @@
+{
+  "id": "b1-01-subordinate-clauses",
+  "cefr": "B1",
+  "order": 7,
+  "title": "Subordinate Clauses",
+  "germanTitle": "Nebensätze (weil, dass, obwohl, wenn)",
+  "subtitle": "Master verb-final clauses and the 'Verb, Verb' bridge when a subordinate clause comes first.",
+  "estimatedMinutes": 5,
+  "grammarFocus": ["weil / dass / obwohl", "Verb at End", "Verb, Verb Rule", "denn vs. weil"],
+  "cheatSheet": {
+    "summary": "Subordinating conjunctions (weil, dass, obwohl, wenn, ob, bevor, nachdem) open a subordinate clause (Nebensatz) and kick the conjugated verb all the way to the very end!",
+    "keyTakeaways": [
+      "Standard Nebensatz: Main Clause + comma + Conjunction + Subject + ... + CONJUGATED VERB.",
+      "Fronted Nebensatz ('Verb, Verb' Rule): If the Nebensatz comes first, it occupies Position 1 of the entire sentence → the main clause verb MUST immediately follow the comma!",
+      "With modal/Perfekt verbs in a Nebensatz, the conjugated modal/auxiliary goes LAST (even after the infinitive/Partizip II!).",
+      "Coordinating conjunctions (ADUSO: aber, denn, und, sondern, oder) keep normal V2 order ('... denn ich bin müde')."
+    ],
+    "patterns": [
+      { "formula": "Main, weil + ... + Verb", "example": "Ich bleibe zu Hause, weil ich müde bin.", "translation": "I'm staying home because I'm tired." },
+      { "formula": "Wenn ... Verb, Verb ...", "example": "Wenn es regnet, nehme ich den Bus.", "translation": "When it rains, I take the bus." },
+      { "formula": "dass + ... + Infinitive + Modal", "example": "Er sagt, dass er morgen kommen kann.", "translation": "He says that he can come tomorrow." },
+      { "formula": "denn (Position 0) → V2!", "example": "Ich lerne, denn ich habe eine Prüfung.", "translation": "I'm studying because I have an exam." }
+    ],
+    "watchOut": "In a Perfekt Nebensatz, the auxiliary moves to the absolute end: '... weil ich das Buch gelesen HABE' (NOT 'habe gelesen')."
+  },
+  "exercises": [
+    {
+      "id": "b1-01-e1",
+      "type": "satzklammer",
+      "cefr": "B1",
+      "instruction": "Connect with 'weil' and send the conjugated verb to the very end.",
+      "english": "I'm learning German because I live in Zurich.",
+      "fullGerman": "Ich lerne Deutsch, weil ich in Zürich wohne.",
+      "tokens": [
+        { "id": "t1", "text": "Ich lerne Deutsch,", "field": "vorfeld" },
+        { "id": "t2", "text": "weil", "field": "nebensatz_conj" },
+        { "id": "t3", "text": "ich", "field": "mittelfeld" },
+        { "id": "t4", "text": "in Zürich", "field": "mittelfeld" },
+        { "id": "t5", "text": "wohne.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Ich lerne Deutsch,", "weil", "ich", "in Zürich", "wohne."],
+      "ruleTag": "'weil' Sends Verb to End",
+      "rulePill": "'weil' is a subordinating conjunction → it kicks the conjugated verb 'wohne' to the final slot of the clause."
+    },
+    {
+      "id": "b1-01-e2",
+      "type": "satzklammer",
+      "cefr": "B1",
+      "instruction": "Start with 'Wenn' and apply the 'Verb, Verb' bridge across the comma!",
+      "english": "If I have time, I will visit you.",
+      "fullGerman": "Wenn ich Zeit habe, besuche ich dich.",
+      "tokens": [
+        { "id": "t1", "text": "Wenn", "field": "nebensatz_conj" },
+        { "id": "t2", "text": "ich Zeit", "field": "mittelfeld" },
+        { "id": "t3", "text": "habe,", "field": "endklammer" },
+        { "id": "t4", "text": "besuche", "field": "verb2" },
+        { "id": "t5", "text": "ich dich.", "field": "mittelfeld" }
+      ],
+      "correctOrder": ["Wenn", "ich Zeit", "habe,", "besuche", "ich dich."],
+      "ruleTag": "Verb, Verb Rule",
+      "rulePill": "The whole 'Wenn'-clause acts as Position 1 → the main verb 'besuche' must follow the comma immediately ('habe, besuche')."
+    },
+    {
+      "id": "b1-01-e3",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Wir gehen spazieren, ___ es draußen leicht regnet.",
+      "english": "We go for a walk, although it is raining lightly outside.",
+      "fullGerman": "Wir gehen spazieren, obwohl es draußen leicht regnet.",
+      "options": ["weil", "obwohl", "denn", "deshalb"],
+      "correctIndex": 1,
+      "ruleTag": "Concessive 'obwohl'",
+      "rulePill": "'obwohl' expresses contrast ('although') and sends 'regnet' to the end of the clause."
+    },
+    {
+      "id": "b1-01-e4",
+      "type": "satzklammer",
+      "cefr": "B1",
+      "instruction": "Place the modal verb LAST in the 'dass'-clause.",
+      "english": "She hopes that she can travel to Japan soon.",
+      "fullGerman": "Sie hofft, dass sie bald nach Japan reisen kann.",
+      "tokens": [
+        { "id": "t1", "text": "Sie hofft,", "field": "vorfeld" },
+        { "id": "t2", "text": "dass", "field": "nebensatz_conj" },
+        { "id": "t3", "text": "sie bald nach Japan", "field": "mittelfeld" },
+        { "id": "t4", "text": "reisen", "field": "endklammer" },
+        { "id": "t5", "text": "kann.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Sie hofft,", "dass", "sie bald nach Japan", "reisen", "kann."],
+      "ruleTag": "Modal Verb in Nebensatz",
+      "rulePill": "Inside a subordinate clause, the conjugated modal ('kann') goes AFTER the infinitive ('reisen kann')."
+    },
+    {
+      "id": "b1-01-e5",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "Ich weiß nicht genau, ___ der Zug pünktlich ankommt.",
+      "english": "I don't know exactly whether the train arrives on time.",
+      "fullGerman": "Ich weiß nicht genau, ob der Zug pünktlich ankommt.",
+      "options": ["wenn", "ob", "dass", "als"],
+      "correctIndex": 1,
+      "nouns": [
+        { "word": "Zug", "baseForm": "der Zug", "gender": "M", "activeCase": "Nominativ", "caseTrigger": "Subject of the indirect yes/no question" }
+      ],
+      "ruleTag": "Indirect Yes/No Question ('ob')",
+      "rulePill": "Use 'ob' (never 'wenn') for 'whether / if' in indirect yes/no questions ('Ich weiß nicht, ob...')."
+    },
+    {
+      "id": "b1-01-e6",
+      "type": "spot_fix",
+      "cefr": "B1",
+      "promptHint": "Notice the word order! One conjunction is wrong for V2 word order.",
+      "sentenceTokens": ["Ich", "komme", "später,", "weil", "ich", "habe", "noch", "einen", "Termin."],
+      "errorTokenIndex": 3,
+      "fixOptions": ["denn", "obwohl", "dass", "wenn"],
+      "correctFixIndex": 0,
+      "english": "I'm coming later because I still have an appointment.",
+      "fullGerman": "Ich komme später, denn ich habe noch einen Termin.",
+      "ruleTag": "'denn' (V2) vs. 'weil' (Verb-End)",
+      "rulePill": "Because 'habe' stays in Position 2, you MUST use coordinating 'denn' (Position 0), not subordinating 'weil'."
+    },
+    {
+      "id": "b1-01-e7",
+      "type": "case_drill",
+      "cefr": "B1",
+      "prompt": "___ ich ein Kind war, lebten wir auf dem Land.",
+      "english": "When I was a child, we lived in the countryside.",
+      "fullGerman": "Als ich ein Kind war, lebten wir auf dem Land.",
+      "options": ["Wenn", "Als", "Ob", "Wann"],
+      "correctIndex": 1,
+      "nouns": [
+        { "word": "Kind", "baseForm": "das Kind", "gender": "N", "activeCase": "Nominativ", "caseTrigger": "Identity after 'sein' (war) takes Nominative" }
+      ],
+      "ruleTag": "'als' (Single Past Event) vs. 'wenn'",
+      "rulePill": "Use 'als' for a single past event or period ('When I was a child'), and 'wenn' for repeated/present/future events."
+    },
+    {
+      "id": "b1-01-e8",
+      "type": "satzklammer",
+      "cefr": "B1",
+      "instruction": "Put the Perfekt auxiliary at the very end of the 'obwohl'-clause.",
+      "english": "He passed the exam even though he studied very little.",
+      "fullGerman": "Er hat die Prüfung bestanden, obwohl er wenig gelernt hat.",
+      "tokens": [
+        { "id": "t1", "text": "Er hat die Prüfung bestanden,", "field": "vorfeld" },
+        { "id": "t2", "text": "obwohl", "field": "nebensatz_conj" },
+        { "id": "t3", "text": "er wenig", "field": "mittelfeld" },
+        { "id": "t4", "text": "gelernt", "field": "endklammer" },
+        { "id": "t5", "text": "hat.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Er hat die Prüfung bestanden,", "obwohl", "er wenig", "gelernt", "hat."],
+      "ruleTag": "Perfekt in Nebensatz",
+      "rulePill": "In a subordinate clause, the conjugated auxiliary 'hat' moves behind the Partizip II: '... wenig gelernt hat'."
+    },
+    {
+      "id": "b1-01-e9",
+      "type": "spot_fix",
+      "cefr": "B1",
+      "promptHint": "Inside a 'dass'-clause, separable verbs reunite AND conjugate for the subject!",
+      "sentenceTokens": ["Ich", "weiß,", "dass", "du", "morgen", "früh", "aufstehen."],
+      "errorTokenIndex": 6,
+      "fixOptions": ["aufstehst.", "stehst auf.", "aufsteht.", "aufgestanden."],
+      "correctFixIndex": 0,
+      "english": "I know that you get up early tomorrow.",
+      "fullGerman": "Ich weiß, dass du morgen früh aufstehst.",
+      "ruleTag": "Separable Verb Reunited",
+      "rulePill": "In a subordinate clause ('dass'), separable 'aufstehen' reunites at the end and conjugates for 'du': 'aufstehst'."
+    }
+  ]
+}

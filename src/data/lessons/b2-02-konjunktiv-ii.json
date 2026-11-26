@@ -1,0 +1,165 @@
+{
+  "id": "b2-02-konjunktiv-ii",
+  "cefr": "B2",
+  "order": 11,
+  "title": "Konjunktiv II & Unreal Conditionals",
+  "germanTitle": "Konjunktiv II (hätte, wäre, würde)",
+  "subtitle": "Express wishes, polite requests, counterfactuals, and elegant 'wenn'-less B2 conditionals.",
+  "estimatedMinutes": 5,
+  "grammarFocus": ["hätte / wäre", "würde + Infinitiv", "Past Unreal", "Wenn-less Inversion"],
+  "cheatSheet": {
+    "summary": "Konjunktiv II is the mood of imagination, politeness, and 'what if'. Use direct forms for high-frequency verbs (wäre, hätte, könnte, müsste) and 'würde + Infinitiv' for almost all other verbs.",
+    "keyTakeaways": [
+      "Core direct forms (ALWAYS prefer over würde!): sein → wäre, haben → hätte, können → könnte, müssen → müsste, dürfen → dürfte, sollen → sollte.",
+      "Other verbs: 'würde' (Pos 2) + Infinitive (End Bracket) → 'Ich würde gern in Wien leben.'",
+      "Past Unreal (Counterfactuals): 'hätte / wäre' + Partizip II → 'Wenn ich das gewusst hätte, wäre ich gekommen.'",
+      "B2 Polish ('wenn'-less conditional): Drop 'wenn' and put the Konjunktiv II verb in Position 1! ('Hätte ich mehr Zeit, würde ich mehr lesen.')"
+    ],
+    "patterns": [
+      { "formula": "wäre / hätte (Direct K-II)", "example": "Ich wäre jetzt gern am Meer.", "translation": "I'd love to be at the sea right now." },
+      { "formula": "würde + ... + Infinitiv", "example": "An deiner Stelle würde ich anrufen.", "translation": "In your place I would call." },
+      { "formula": "Past Unreal: hätte/wäre + P-II", "example": "Er hätte den Zug fast verpasst.", "translation": "He almost would have missed the train." },
+      { "formula": "Drop 'wenn' → Verb in Pos 1", "example": "Hätte ich Zeit, käme ich mit.", "translation": "Had I time, I would come along." }
+    ],
+    "watchOut": "NEVER say 'würde sein' or 'würde haben'—native speakers always use 'wäre' and 'hätte' directly!"
+  },
+  "exercises": [
+    {
+      "id": "b2-02-e1",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "haben",
+      "tense": "Konjunktiv II",
+      "subject": "ich",
+      "prompt": "Wenn ich mehr Freizeit ___, würde ich ein Instrument lernen.",
+      "english": "If I had more free time, I would learn an instrument.",
+      "fullGerman": "Wenn ich mehr Freizeit hätte, würde ich ein Instrument lernen.",
+      "options": ["hatte", "hätte", "habe", "würde haben"],
+      "correctIndex": 1,
+      "ruleTag": "Direct Konjunktiv II 'hätte'",
+      "rulePill": "Always use the direct umlauted form 'hätte' (never 'würde haben' and never Präteritum 'hatte') for unreal wishes."
+    },
+    {
+      "id": "b2-02-e2",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "sein",
+      "tense": "Konjunktiv II",
+      "subject": "es",
+      "prompt": "Es ___ wunderbar, wenn du morgen vorbeikommen könntest.",
+      "english": "It would be wonderful if you could stop by tomorrow.",
+      "fullGerman": "Es wäre wunderbar, wenn du morgen vorbeikommen könntest.",
+      "options": ["war", "ist", "wäre", "würde"],
+      "correctIndex": 2,
+      "ruleTag": "Direct Konjunktiv II 'wäre'",
+      "rulePill": "'sein' uses direct Konjunktiv II 'wäre' ('Es wäre wunderbar')—built from Präteritum 'war' + umlaut + '-e'."
+    },
+    {
+      "id": "b2-02-e3",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "können",
+      "tense": "Konjunktiv II",
+      "subject": "Sie",
+      "prompt": "___ Sie mir bitte das Fenster schließen?",
+      "english": "Could you please close the window for me?",
+      "fullGerman": "Könnten Sie mir bitte das Fenster schließen?",
+      "options": ["Konnten", "Können", "Könnten", "Würden können"],
+      "correctIndex": 2,
+      "ruleTag": "Polite Request ('Könnten Sie')",
+      "rulePill": "Adding an umlaut to Präteritum 'konnten' yields polite Konjunktiv II 'Könnten Sie...'."
+    },
+    {
+      "id": "b2-02-e4",
+      "type": "satzklammer",
+      "cefr": "B2",
+      "instruction": "Build an advice sentence using the 'würde + Infinitiv' bracket.",
+      "english": "In your place I would accept the offer.",
+      "fullGerman": "An deiner Stelle würde ich das Angebot annehmen.",
+      "tokens": [
+        { "id": "t1", "text": "An deiner Stelle", "field": "vorfeld" },
+        { "id": "t2", "text": "würde", "field": "verb2" },
+        { "id": "t3", "text": "ich", "field": "mittelfeld" },
+        { "id": "t4", "text": "das Angebot", "field": "mittelfeld", "gender": "N" },
+        { "id": "t5", "text": "annehmen.", "field": "endklammer" }
+      ],
+      "correctOrder": ["An deiner Stelle", "würde", "ich", "das Angebot", "annehmen."],
+      "ruleTag": "Advice with 'würde' Bracket",
+      "rulePill": "'An deiner Stelle' takes Position 1 → 'würde' holds Position 2 → 'annehmen' closes the End Bracket."
+    },
+    {
+      "id": "b2-02-e5",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "kommen",
+      "tense": "Konjunktiv II",
+      "subject": "wir",
+      "prompt": "Wenn der Bus nicht ausgefallen wäre, ___ wir pünktlich angekommen.",
+      "english": "If the bus hadn't been canceled, we would have arrived on time.",
+      "fullGerman": "Wenn der Bus nicht ausgefallen wäre, wären wir pünktlich angekommen.",
+      "options": ["hätten", "wären", "würden", "waren"],
+      "correctIndex": 1,
+      "ruleTag": "Past Unreal with 'wären'",
+      "rulePill": "'ankommen' takes 'sein' in the Perfekt → its Past Konjunktiv II uses 'wären' + Partizip II ('wären angekommen')."
+    },
+    {
+      "id": "b2-02-e6",
+      "type": "satzklammer",
+      "cefr": "B2",
+      "instruction": "Form a sleek B2 'wenn'-less conditional by placing 'Hätte' in Position 1!",
+      "english": "Had I known that earlier, I would have helped you.",
+      "fullGerman": "Hätte ich das früher gewusst, hätte ich dir geholfen.",
+      "tokens": [
+        { "id": "t1", "text": "Hätte", "field": "verb2" },
+        { "id": "t2", "text": "ich das früher", "field": "mittelfeld" },
+        { "id": "t3", "text": "gewusst,", "field": "endklammer" },
+        { "id": "t4", "text": "hätte", "field": "verb2" },
+        { "id": "t5", "text": "ich dir geholfen.", "field": "mittelfeld" }
+      ],
+      "correctOrder": ["Hätte", "ich das früher", "gewusst,", "hätte", "ich dir geholfen."],
+      "ruleTag": "Wenn-less Inversion (B2)",
+      "rulePill": "Dropping 'wenn' pulls 'Hätte' to Position 1, followed immediately by the main clause verb after the comma."
+    },
+    {
+      "id": "b2-02-e7",
+      "type": "spot_fix",
+      "cefr": "B2",
+      "promptHint": "Watch out for the missing umlaut—this is a wish, not simple past!",
+      "sentenceTokens": ["Ich", "wünschte,", "du", "warst", "jetzt", "hier."],
+      "errorTokenIndex": 3,
+      "fixOptions": ["wärst", "bist", "würdest", "gewesen"],
+      "correctFixIndex": 0,
+      "english": "I wish you were here right now.",
+      "fullGerman": "Ich wünschte, du wärst jetzt hier.",
+      "ruleTag": "Counterfactual Wish ('wärst')",
+      "rulePill": "After 'Ich wünschte', use Konjunktiv II 'wärst' (with umlaut), never indicative past 'warst'."
+    },
+    {
+      "id": "b2-02-e8",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Er tut so, ___ hätte er nichts gehört.",
+      "english": "He acts as if he hadn't heard anything.",
+      "fullGerman": "Er tut so, als hätte er nichts gehört.",
+      "options": ["ob", "als", "wenn", "wie"],
+      "correctIndex": 1,
+      "ruleTag": "Unreal Comparison ('als + K-II')",
+      "rulePill": "'als' + immediate Konjunktiv II verb ('als hätte er...') is the sleek shorthand for 'als ob er ... hätte' ('as if')."
+    },
+    {
+      "id": "b2-02-e9",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "sollen",
+      "tense": "Konjunktiv II",
+      "subject": "du",
+      "prompt": "Du ___ bei diesem Fieber unbedingt zum Arzt gehen.",
+      "english": "With this fever you really should go to the doctor.",
+      "fullGerman": "Du solltest bei diesem Fieber unbedingt zum Arzt gehen.",
+      "options": ["sollst", "solltest", "sölltest", "würdest sollen"],
+      "correctIndex": 1,
+      "ruleTag": "Advice with 'solltest' (No Umlaut)",
+      "rulePill": "'sollen' and 'wollen' NEVER take an umlaut in Konjunktiv II: 'du solltest' (never 'sölltest')."
+    }
+  ]
+}

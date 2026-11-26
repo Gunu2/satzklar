@@ -1,0 +1,167 @@
+{
+  "id": "a2-03-perfekt-past-tense",
+  "cefr": "A2",
+  "order": 6,
+  "title": "Perfekt Past Tense",
+  "germanTitle": "Perfekt (haben vs. sein + Partizip II)",
+  "subtitle": "Speak naturally about the past by picking the right auxiliary (haben or sein) and closing the bracket with Partizip II.",
+  "estimatedMinutes": 4,
+  "grammarFocus": ["haben vs. sein", "Partizip II", "ge- Prefix", "Perfekt Bracket"],
+  "cheatSheet": {
+    "summary": "In spoken German, the Perfekt is the everyday past tense. It forms a Satzklammer: conjugated 'haben' or 'sein' sits in Position 2, and the Partizip II snaps to the very end.",
+    "keyTakeaways": [
+      "Use 'sein' for movement from A to B (gehen → gegangen, fahren → gefahren, fliegen → geflogen) and change of state (aufwachen, einschlafen, sterben) + bleiben & sein.",
+      "Use 'haben' for almost everything else (especially transitive verbs with a direct object!).",
+      "Regular Partizip II: ge + stem + t (gemacht, gekauft). Irregular: ge + changed stem + en (gesehen, getrunken).",
+      "No 'ge-' prefix for verbs ending in '-ieren' (studiert, telefoniert) or inseparable prefixes (be-, ver-, er-, ent-, ge-)."
+    ],
+    "patterns": [
+      { "formula": "haben (2) + ... + ge...t (End)", "example": "Ich habe gestern Nudeln gekocht.", "translation": "I cooked pasta yesterday." },
+      { "formula": "sein (2) + ... + Partizip II", "example": "Wir sind nach Rom geflogen.", "translation": "We flew to Rome." },
+      { "formula": "Separable: prefix + ge + stem", "example": "Er ist früh aufgestanden.", "translation": "He got up early." },
+      { "formula": "Inseparable / -ieren: NO ge-", "example": "Sie hat die Frage verstanden.", "translation": "She understood the question." }
+    ],
+    "watchOut": "Verbs with inseparable prefixes like 'verstehen', 'besuchen', or 'bekommen' NEVER take 'ge-': 'besucht' (NOT 'gebesucht')."
+  },
+  "exercises": [
+    {
+      "id": "a2-03-e1",
+      "type": "verb_conjugation",
+      "cefr": "A2",
+      "infinitive": "fahren",
+      "tense": "Perfekt",
+      "subject": "wir",
+      "prompt": "Letztes Wochenende ___ wir ans Meer gefahren.",
+      "english": "Last weekend we drove to the sea.",
+      "fullGerman": "Letztes Wochenende sind wir ans Meer gefahren.",
+      "options": ["haben", "sind", "waren", "seid"],
+      "correctIndex": 1,
+      "ruleTag": "Perfekt with 'sein' (Motion)",
+      "rulePill": "'fahren' expresses movement from A to B → forms Perfekt with 'sein' ('wir sind ... gefahren'), not 'haben'."
+    },
+    {
+      "id": "a2-03-e2",
+      "type": "verb_conjugation",
+      "cefr": "A2",
+      "infinitive": "trinken",
+      "tense": "Perfekt",
+      "subject": "ich",
+      "prompt": "Ich habe heute schon zwei Tassen Kaffee ___.",
+      "english": "I have already drunk two cups of coffee today.",
+      "fullGerman": "Ich habe heute schon zwei Tassen Kaffee getrunken.",
+      "options": ["getrinkt", "getrunken", "trank", "getranken"],
+      "correctIndex": 1,
+      "ruleTag": "Irregular Partizip II",
+      "rulePill": "'trinken' is a strong irregular verb: trinken → trank → getrunken (vowel shifts i → u, ends in '-en')."
+    },
+    {
+      "id": "a2-03-e3",
+      "type": "satzklammer",
+      "cefr": "A2",
+      "instruction": "Build the Perfekt Satzklammer: 'haben' in Position 2, Partizip II in the End Bracket.",
+      "english": "Yesterday I watched an exciting film.",
+      "fullGerman": "Gestern habe ich einen spannenden Film gesehen.",
+      "tokens": [
+        { "id": "t1", "text": "Gestern", "field": "vorfeld" },
+        { "id": "t2", "text": "habe", "field": "verb2" },
+        { "id": "t3", "text": "ich", "field": "mittelfeld" },
+        { "id": "t4", "text": "einen spannenden Film", "field": "mittelfeld", "gender": "M" },
+        { "id": "t5", "text": "gesehen.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Gestern", "habe", "ich", "einen spannenden Film", "gesehen."],
+      "ruleTag": "Perfekt V2 Bracket",
+      "rulePill": "'Gestern' takes Position 1 → auxiliary 'habe' holds Position 2 → 'gesehen' closes the End Bracket."
+    },
+    {
+      "id": "a2-03-e4",
+      "type": "spot_fix",
+      "cefr": "A2",
+      "promptHint": "Check the auxiliary verb for 'bleiben' (a special 'sein' verb!).",
+      "sentenceTokens": ["Am", "Sonntag", "habe", "ich", "zu", "Hause", "geblieben."],
+      "errorTokenIndex": 2,
+      "fixOptions": ["bin", "war", "werde", "hatte"],
+      "correctFixIndex": 0,
+      "english": "On Sunday I stayed at home.",
+      "fullGerman": "Am Sonntag bin ich zu Hause geblieben.",
+      "ruleTag": "Exception 'bleiben' + sein",
+      "rulePill": "Even though 'bleiben' means staying still, it ALWAYS takes 'sein' in the Perfekt: 'ich bin geblieben'."
+    },
+    {
+      "id": "a2-03-e5",
+      "type": "verb_conjugation",
+      "cefr": "A2",
+      "infinitive": "besuchen",
+      "tense": "Perfekt",
+      "subject": "sie (pl.)",
+      "prompt": "Sie haben im Sommer ihre Großeltern ___.",
+      "english": "They visited their grandparents in the summer.",
+      "fullGerman": "Sie haben im Sommer ihre Großeltern besucht.",
+      "options": ["gebesucht", "besucht", "besuchen", "besuchte"],
+      "correctIndex": 1,
+      "ruleTag": "Inseparable Prefix (No 'ge-')",
+      "rulePill": "Verbs starting with inseparable prefixes (be-, ver-, er-, ent-) NEVER add 'ge-' → 'besucht'."
+    },
+    {
+      "id": "a2-03-e6",
+      "type": "verb_conjugation",
+      "cefr": "A2",
+      "infinitive": "einkaufen",
+      "tense": "Perfekt",
+      "subject": "er",
+      "prompt": "Er hat heute für die Party ___.",
+      "english": "He shopped for the party today.",
+      "fullGerman": "Er hat heute für die Party eingekauft.",
+      "options": ["geeinkauft", "eingekauft", "einkauft", "gekauft ein"],
+      "correctIndex": 1,
+      "ruleTag": "Separable Partizip II (-ge-)",
+      "rulePill": "For separable verbs like 'einkaufen', '-ge-' squeezes right between prefix and stem: ein + ge + kauft = 'eingekauft'."
+    },
+    {
+      "id": "a2-03-e7",
+      "type": "spot_fix",
+      "cefr": "A2",
+      "promptHint": "Verbs ending in '-ieren' follow a special Partizip II rule!",
+      "sentenceTokens": ["Mein", "Freund", "hat", "in", "Heidelberg", "gestudiert."],
+      "errorTokenIndex": 5,
+      "fixOptions": ["studiert.", "studieren.", "studierte.", "gestudieren."],
+      "correctFixIndex": 0,
+      "english": "My friend studied in Heidelberg.",
+      "fullGerman": "Mein Freund hat in Heidelberg studiert.",
+      "ruleTag": "'-ieren' Verbs (No 'ge-')",
+      "rulePill": "All verbs ending in '-ieren' (studieren, reparieren, fotografieren) drop 'ge-' → 'studiert'."
+    },
+    {
+      "id": "a2-03-e8",
+      "type": "satzklammer",
+      "cefr": "A2",
+      "instruction": "Build the Perfekt sentence with 'sein' + separable 'aufstehen'.",
+      "english": "Lisa got up at six o'clock today.",
+      "fullGerman": "Lisa ist heute um sechs Uhr aufgestanden.",
+      "tokens": [
+        { "id": "t1", "text": "Lisa", "field": "vorfeld" },
+        { "id": "t2", "text": "ist", "field": "verb2" },
+        { "id": "t3", "text": "heute", "field": "mittelfeld" },
+        { "id": "t4", "text": "um sechs Uhr", "field": "mittelfeld" },
+        { "id": "t5", "text": "aufgestanden.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Lisa", "ist", "heute", "um sechs Uhr", "aufgestanden."],
+      "ruleTag": "Change of State + Separable",
+      "rulePill": "'aufstehen' marks a change of state (lying → standing) → takes 'sein' + 'auf-ge-standen' at the end."
+    },
+    {
+      "id": "a2-03-e9",
+      "type": "verb_conjugation",
+      "cefr": "A2",
+      "infinitive": "schreiben",
+      "tense": "Perfekt",
+      "subject": "du",
+      "prompt": "Hast du deiner Tante schon eine Karte ___?",
+      "english": "Have you already written a card to your aunt?",
+      "fullGerman": "Hast du deiner Tante schon eine Karte geschrieben?",
+      "options": ["geschreibt", "geschrieben", "schrieb", "geschritten"],
+      "correctIndex": 1,
+      "ruleTag": "Irregular Partizip II (ei → ie)",
+      "rulePill": "'schreiben' swaps ei → ie in the past participle: schreiben → schrieb → 'geschrieben'."
+    }
+  ]
+}

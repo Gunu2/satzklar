@@ -1,0 +1,173 @@
+{
+  "id": "b2-03-passive-voice-clauses",
+  "cefr": "B2",
+  "order": 12,
+  "title": "Passive Voice & Relative Clauses",
+  "germanTitle": "Vorgangspassiv & Relativsätze",
+  "subtitle": "Shift focus onto actions with 'werden + Partizip II' and weave precise relative clauses across all four cases.",
+  "estimatedMinutes": 5,
+  "grammarFocus": ["werden + Partizip II", "von vs. durch", "Relative Pronouns", "dessen / deren"],
+  "cheatSheet": {
+    "summary": "The German process passive (Vorgangspassiv) uses 'werden + Partizip II', while Relative Clauses link descriptions using pronouns that match the noun's GENDER and the clause's CASE.",
+    "keyTakeaways": [
+      "Process Passive (Present): wird / werden (Pos 2) + Partizip II (End) → 'Das Haus wird gebaut.'",
+      "Past Passive (Präteritum): wurde / wurden + Partizip II → 'Die Brücke wurde 1990 eröffnet.'",
+      "Agent in Passive: Use 'von + Dative' for people/institutions ('vom Arzt') and 'durch + Accusative' for causes/means ('durch den Sturm').",
+      "Relative Pronouns match the definite articles (der/die/das/den/dem) EXCEPT Dative Plural ('denen') and Genitive ('dessen [M/N]', 'deren [F/PL]')."
+    ],
+    "patterns": [
+      { "formula": "wird + ... + Partizip II", "example": "Der Brief wird heute geschickt.", "translation": "The letter is being sent today.", "gender": "M" },
+      { "formula": "wurde + ... + Partizip II", "example": "Das Gesetz wurde geändert.", "translation": "The law was changed.", "gender": "N" },
+      { "formula": "Rel. Pronoun (Dative PL)", "example": "Die Freunde, mit denen ich reise.", "translation": "The friends with whom I travel.", "gender": "PL" },
+      { "formula": "Rel. Pronoun (Genitive)", "example": "Die Autorin, deren Buch ich lese.", "translation": "The author whose book I'm reading.", "gender": "F" }
+    ],
+    "watchOut": "Relative clauses are subordinate clauses—always set them off with commas AND kick the conjugated verb to the end of the relative clause!"
+  },
+  "exercises": [
+    {
+      "id": "b2-03-e1",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "bauen",
+      "tense": "Passiv",
+      "subject": "eine neue Schule",
+      "prompt": "In unserem Viertel ___ derzeit eine neue Schule gebaut.",
+      "english": "A new school is currently being built in our neighborhood.",
+      "fullGerman": "In unserem Viertel wird derzeit eine neue Schule gebaut.",
+      "options": ["ist", "wird", "wurde", "hat"],
+      "correctIndex": 1,
+      "ruleTag": "Present Process Passive ('wird')",
+      "rulePill": "An ongoing process right now ('derzeit') takes Present Vorgangspassiv: 'wird + Partizip II' ('wird gebaut')."
+    },
+    {
+      "id": "b2-03-e2",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Das ist der Kollege, ___ ich gestern im Zug getroffen habe.",
+      "english": "That is the colleague whom I met on the train yesterday.",
+      "fullGerman": "Das ist der Kollege, den ich gestern im Zug getroffen habe.",
+      "options": ["der", "den", "dem", "dessen"],
+      "correctIndex": 1,
+      "targetGender": "M",
+      "targetCase": "Akkusativ",
+      "nouns": [
+        { "word": "Kollege", "baseForm": "der Kollege", "gender": "M", "activeCase": "Akkusativ", "caseTrigger": "Gender = Masculine [M] (der Kollege); role inside relative clause = direct object of 'treffen' (Akk) → 'den'" }
+      ],
+      "ruleTag": "Relative Pronoun (Gender + Case)",
+      "rulePill": "Gender comes from 'der Kollege' [M]; Case comes from 'treffen' inside the relative clause (Accusative) → 'den'."
+    },
+    {
+      "id": "b2-03-e3",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Die Kollegin, mit ___ ich das Projekt leite, spricht vier Sprachen.",
+      "english": "The colleague with whom I lead the project speaks four languages.",
+      "fullGerman": "Die Kollegin, mit der ich das Projekt leite, spricht vier Sprachen.",
+      "options": ["die", "der", "dem", "deren"],
+      "correctIndex": 1,
+      "targetGender": "F",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Kollegin", "baseForm": "die Kollegin", "gender": "F", "activeCase": "Dativ", "caseTrigger": "'mit' triggers Dative → Feminine [F] relative pronoun becomes 'der'" }
+      ],
+      "ruleTag": "Preposition + Relative Pronoun",
+      "rulePill": "Preposition 'mit' triggers Dative → Feminine [F] 'die Kollegin' takes relative pronoun 'der' ('mit der')."
+    },
+    {
+      "id": "b2-03-e4",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Das sind die Nachbarn, ___ wir oft beim Garten helfen.",
+      "english": "Those are the neighbors whom we often help with the garden.",
+      "fullGerman": "Das sind die Nachbarn, denen wir oft beim Garten helfen.",
+      "options": ["die", "den", "denen", "deren"],
+      "correctIndex": 2,
+      "targetGender": "PL",
+      "targetCase": "Dativ",
+      "nouns": [
+        { "word": "Nachbarn", "baseForm": "die Nachbarn", "gender": "PL", "activeCase": "Dativ", "caseTrigger": "'helfen' takes Dative → Plural [PL] relative pronoun is ALWAYS 'denen'" }
+      ],
+      "ruleTag": "Dative Plural Relative ('denen')",
+      "rulePill": "Dative Plural relative pronoun is a special form: 'denen' (NEVER 'den'!)—triggered here by Dative verb 'helfen'."
+    },
+    {
+      "id": "b2-03-e5",
+      "type": "verb_conjugation",
+      "cefr": "B2",
+      "infinitive": "eröffnen",
+      "tense": "Passiv",
+      "subject": "das Museum",
+      "prompt": "Das moderne Museum ___ im Jahr 2018 feierlich eröffnet.",
+      "english": "The modern museum was ceremoniously opened in 2018.",
+      "fullGerman": "Das moderne Museum wurde im Jahr 2018 feierlich eröffnet.",
+      "options": ["wird", "wurde", "würde", "ist geworden"],
+      "correctIndex": 1,
+      "ruleTag": "Past Passive ('wurde')",
+      "rulePill": "For completed past passive events, use Präteritum 'wurde + Partizip II' ('wurde eröffnet'—no umlaut!)."
+    },
+    {
+      "id": "b2-03-e6",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Der Patient wurde ___ einer erfahrenen Ärztin untersucht.",
+      "english": "The patient was examined by an experienced doctor.",
+      "fullGerman": "Der Patient wurde von einer erfahrenen Ärztin untersucht.",
+      "options": ["durch", "von", "mit", "bei"],
+      "correctIndex": 1,
+      "nouns": [
+        { "word": "Ärztin", "baseForm": "die Ärztin", "gender": "F", "activeCase": "Dativ", "caseTrigger": "Human agent in passive voice ALWAYS uses 'von + Dative'" }
+      ],
+      "ruleTag": "Passive Agent ('von' vs. 'durch')",
+      "rulePill": "In Passive Voice, use 'von + Dative' for a person/agent ('von einer Ärztin') and 'durch + Accusative' for a cause or instrument."
+    },
+    {
+      "id": "b2-03-e7",
+      "type": "case_drill",
+      "cefr": "B2",
+      "prompt": "Das ist der Musiker, ___ Konzert letzte Woche ausverkauft war.",
+      "english": "That is the musician whose concert was sold out last week.",
+      "fullGerman": "Das ist der Musiker, dessen Konzert letzte Woche ausverkauft war.",
+      "options": ["des", "deren", "dessen", "dem"],
+      "correctIndex": 2,
+      "targetGender": "M",
+      "targetCase": "Genitiv",
+      "nouns": [
+        { "word": "Musiker", "baseForm": "der Musiker", "gender": "M", "activeCase": "Genitiv", "caseTrigger": "Possession ('whose concert') for Masculine [M] / Neuter [N] → 'dessen'" }
+      ],
+      "ruleTag": "Genitive Relative ('dessen' / 'deren')",
+      "rulePill": "'whose' in German uses Genitive relative pronouns: 'dessen' for Masculine [M] / Neuter [N], and 'deren' for Feminine [F] / Plural [PL]."
+    },
+    {
+      "id": "b2-03-e8",
+      "type": "satzklammer",
+      "cefr": "B2",
+      "instruction": "Build the modal passive bracket: modal in Pos 2, 'Partizip II + werden' at the very end!",
+      "english": "The report has to be submitted by Friday.",
+      "fullGerman": "Der Bericht muss bis Freitag abgegeben werden.",
+      "tokens": [
+        { "id": "t1", "text": "Der Bericht", "field": "vorfeld", "gender": "M" },
+        { "id": "t2", "text": "muss", "field": "verb2" },
+        { "id": "t3", "text": "bis Freitag", "field": "mittelfeld" },
+        { "id": "t4", "text": "abgegeben", "field": "endklammer" },
+        { "id": "t5", "text": "werden.", "field": "endklammer" }
+      ],
+      "correctOrder": ["Der Bericht", "muss", "bis Freitag", "abgegeben", "werden."],
+      "ruleTag": "Modal Passive Bracket",
+      "rulePill": "Modal Passive keeps the modal ('muss') in Position 2 and closes the End Bracket with 'Partizip II + werden' ('abgegeben werden')."
+    },
+    {
+      "id": "b2-03-e9",
+      "type": "spot_fix",
+      "cefr": "B2",
+      "promptHint": "Check the case of the relative pronoun for 'deren / dessen' (Feminine 'die Autorin')!",
+      "sentenceTokens": ["Ich", "kenne", "die", "Autorin,", "dessen", "Roman", "den", "Preis", "gewann."],
+      "errorTokenIndex": 4,
+      "fixOptions": ["deren", "der", "die", "denen"],
+      "correctFixIndex": 0,
+      "english": "I know the author whose novel won the prize.",
+      "fullGerman": "Ich kenne die Autorin, deren Roman den Preis gewann.",
+      "ruleTag": "Feminine Genitive Relative ('deren')",
+      "rulePill": "Genitive relative pronouns match the OWNER's gender ('die Autorin' [F]), not the owned object → use 'deren'!"
+    }
+  ]
+}
