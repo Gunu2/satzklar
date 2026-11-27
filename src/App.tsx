@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { EXERCISE_INDEX } from './data';
 import type {
   ActiveTab,
@@ -34,6 +34,12 @@ import { MistakeVaultView } from './components/vault/MistakeVaultView';
 import { SentenceDoctorView } from './components/doctor/SentenceDoctorView';
 import { GrammarDrawer } from './components/reference/GrammarDrawer';
 import { SettingsModal } from './components/settings/SettingsModal';
+
+const ExamStudioView = lazy(() =>
+  import('./components/exam/ExamStudioView').then((m) => ({
+    default: m.ExamStudioView,
+  }))
+);
 
 interface ActiveDrillSession {
   id: string;
@@ -231,6 +237,39 @@ export function App() {
     []
   );
 
+  const handleRecordExamResult = useCallback(
+    (
+      examId: string,
+      skill: 'hoeren' | 'schreiben',
+      cefr: CEFRLevel,
+      scorePct: number,
+      xpEarned: number
+    ) => {
+      setProgress((prev) => {
+        const touched = touchStudyStreak(prev);
+        const existing = touched.examProgress[examId];
+        const bestScore = Math.max(existing?.bestScore ?? 0, scorePct);
+        return {
+          ...touched,
+          xp: touched.xp + xpEarned,
+          examProgress: {
+            ...touched.examProgress,
+            [examId]: {
+              examId,
+              skill,
+              cefr,
+              bestScore,
+              passed: bestScore >= 60,
+              attempts: (existing?.attempts ?? 0) + 1,
+              completedAt: new Date().toISOString(),
+            },
+          },
+        };
+      });
+    },
+    []
+  );
+
   const handleSaveKey = (key: string) => {
     saveGeminiApiKey(key);
     setGeminiApiKey(key);
@@ -296,8 +335,25 @@ export function App() {
               onOpenCheatSheet={(lesson) => setCheatSheetLesson(lesson)}
               onStartLesson={handleStartLesson}
               onOpenPlacement={() => setShowPlacement(true)}
+              onOpenExams={() => setActiveTab('exam')}
             />
           </>
+        ) : activeTab === 'exam' ? (
+          <Suspense
+            fallback={
+              <div className="paper-card rounded-2xl p-8 text-center text-sm text-[var(--ink-muted)]">
+                Loading Goethe / ÖSD / telc Exam Studio…
+              </div>
+            }
+          >
+            <ExamStudioView
+              examProgress={progress.examProgress}
+              hasGeminiKey={Boolean(geminiApiKey)}
+              geminiApiKey={geminiApiKey}
+              onOpenSettings={() => setSettingsOpen(true)}
+              onRecordExamResult={handleRecordExamResult}
+            />
+          </Suspense>
         ) : activeTab === 'sprint' ? (
           <VerbSprintView
             bestScore={progress.verbSprintBestScore}

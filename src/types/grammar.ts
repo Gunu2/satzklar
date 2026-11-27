@@ -158,9 +158,100 @@ export interface UserProgress {
   onboardingCompleted: boolean;
   lessonProgress: Record<string, LessonProgress>;
   mistakes: Record<string, MistakeRecord>;
+  examProgress: Record<string, ExamResultRecord>;
   verbSprintBestScore: number;
   verbSprintBestStreak: number;
   theme: 'light' | 'dark';
+}
+
+export type ExamInstitute = 'Goethe-Zertifikat' | 'ÖSD' | 'telc';
+
+export interface ExamResultRecord {
+  examId: string;
+  skill: 'hoeren' | 'schreiben';
+  cefr: CEFRLevel;
+  bestScore: number; // 0-100
+  passed: boolean; // >= 60
+  attempts: number;
+  completedAt: string;
+}
+
+export interface ListeningLine {
+  speaker: string;
+  voiceRole: 'narrator' | 'speakerA' | 'speakerB';
+  text: string;
+  english: string;
+}
+
+export interface ListeningQuestion {
+  id: string;
+  format: 'mcq' | 'rf'; // a/b/c multiple choice or Richtig / Falsch
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  evidenceQuote: string;
+  explanation: string;
+}
+
+export interface ListeningExam {
+  id: string;
+  cefr: CEFRLevel;
+  institute: ExamInstitute;
+  partLabel: string; // e.g., "Hören · Teil 1 & 2"
+  title: string;
+  scenario: string;
+  maxPlaysExamMode: 1 | 2;
+  recommendedMinutes: number;
+  transcript: ListeningLine[];
+  keyVocabulary: Array<{ german: string; english: string }>;
+  questions: ListeningQuestion[];
+}
+
+export interface WritingBulletPoint {
+  id: string;
+  label: string;
+  hint: string;
+  detectionKeywords: string[];
+}
+
+export interface WritingExam {
+  id: string;
+  cefr: CEFRLevel;
+  institute: ExamInstitute;
+  partLabel: string; // e.g., "Schreiben · Teil 1"
+  title: string;
+  register: 'informal' | 'formal' | 'semi-formal';
+  situation: string;
+  minWords: number;
+  targetWords: number;
+  recommendedMinutes: number;
+  leitpunkte: WritingBulletPoint[];
+  redemittel: Array<{ category: string; phrases: string[] }>;
+  modelAnswer: {
+    text: string;
+    highlightedPhrases: string[];
+    examinerNote: string;
+  };
+}
+
+export interface WritingCriterionScore {
+  name: string;
+  germanName: string;
+  score: number; // 0-25
+  maxScore: 25;
+  feedback: string;
+}
+
+export interface WritingEvaluation {
+  source: 'local' | 'gemini';
+  totalScore: number; // 0-100
+  passed: boolean; // >= 60
+  wordCount: number;
+  coveredBulletIds: string[];
+  criteria: WritingCriterionScore[];
+  issues: SentenceIssue[];
+  overallFeedback: string;
+  improvedDraft?: string;
 }
 
 export interface SentenceIssue {
@@ -182,4 +273,4 @@ export interface SentenceAnalysisResult {
   praise?: string;
 }
 
-export type ActiveTab = 'roadmap' | 'sprint' | 'vault' | 'doctor';
+export type ActiveTab = 'roadmap' | 'exam' | 'sprint' | 'vault' | 'doctor';

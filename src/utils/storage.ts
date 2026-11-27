@@ -24,6 +24,7 @@ export function getDefaultProgress(): UserProgress {
     onboardingCompleted: false,
     lessonProgress: {},
     mistakes: {},
+    examProgress: {},
     verbSprintBestScore: 0,
     verbSprintBestStreak: 0,
     theme: prefersDark ? 'dark' : 'light',
@@ -41,6 +42,7 @@ export function loadProgress(): UserProgress {
       ...parsed,
       lessonProgress: parsed.lessonProgress ?? {},
       mistakes: parsed.mistakes ?? {},
+      examProgress: parsed.examProgress ?? {},
       theme: parsed.theme === 'dark' ? 'dark' : 'light',
     };
   } catch {
@@ -136,6 +138,10 @@ export function parseImportedProgress(jsonText: string): {
       mistakes:
         candidate.mistakes && typeof candidate.mistakes === 'object'
           ? candidate.mistakes
+          : {},
+      examProgress:
+        candidate.examProgress && typeof candidate.examProgress === 'object'
+          ? candidate.examProgress
           : {},
       verbSprintBestScore: Math.max(0, Math.floor(Number(candidate.verbSprintBestScore) || 0)),
       verbSprintBestStreak: Math.max(0, Math.floor(Number(candidate.verbSprintBestStreak) || 0)),

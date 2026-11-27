@@ -1,6 +1,8 @@
 # SatzKlar — Interactive German Grammar Studio (A1–B2)
 
 > **Zero-friction, open-source visual German grammar studio.** Turn `der/die/das`, *Wechselpräpositionen*, *Satzklammer* word order, and verb conjugation into visual patterns—100% locally in the browser with **zero mandatory API keys**.
+>
+> **Live Demo:** https://gunu2.github.io/satzklar/
 
 ![SatzKlar Studio Preview](./docs/screenshot-roadmap.png)
 
@@ -18,6 +20,7 @@
 
 | Feature | What It Does |
 | :--- | :--- |
+| **Goethe / ÖSD / telc Exam Studio** | 16 realistic **Hören** (Listening) & **Schreiben** (Writing) mock exams (A1–B2) with 1×/2× replay rules, transcript evidence, live *Leitpunkte* checklists, clickable *Redemittel* chips, 4-criterion rubric grading (`0–100 Punkte`), and Band-100 *Musterlösungen*. |
 | **Visual Learning Path (A1–B2)** | 12 structured CEFR units with mastery rings, estimated durations, and **1-Minute Cheat Sheets** before every drill. |
 | **5 Interactive Exercise Modes** | Case & Article Drills (with clickable noun gender hints), **Satzklammer** Word-Tile Puzzle, **Wechselpräpositionen** (`Wo?` vs. `Wohin?`) Simulator, **Spot & Fix** Error Correction, and **60s Verb Sprint**. |
 | **Native `de-DE` Audio** | One-click `1.0×` normal and `0.75×` slow playback via `window.speechSynthesis` (works offline, press `Space`). |

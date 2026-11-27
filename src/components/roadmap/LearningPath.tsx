@@ -1,4 +1,4 @@
-import { Sparkles } from 'lucide-react';
+import { ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
 import { CEFR_SECTIONS, LESSONS, getTotalExerciseCount } from '../../data';
 import type { CEFRLevel, Lesson, LessonProgress } from '../../types/grammar';
 import { GenderBadge } from '../layout/GenderBadge';
@@ -11,6 +11,7 @@ interface LearningPathProps {
   onOpenCheatSheet: (lesson: Lesson) => void;
   onStartLesson: (lesson: Lesson) => void;
   onOpenPlacement: () => void;
+  onOpenExams: () => void;
 }
 
 const FILTER_OPTIONS: Array<'All' | CEFRLevel> = ['All', 'A1', 'A2', 'B1', 'B2'];
@@ -22,6 +23,7 @@ export function LearningPath({
   onOpenCheatSheet,
   onStartLesson,
   onOpenPlacement,
+  onOpenExams,
 }: LearningPathProps) {
   const completedCount = LESSONS.filter(
     (l) => (lessonProgress[l.id]?.mastery ?? 0) >= 85
@@ -38,6 +40,35 @@ export function LearningPath({
 
   return (
     <div className="space-y-8">
+      {/* Exam Studio Callout Banner */}
+      <div className="paper-card rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <span className="w-10 h-10 rounded-xl bg-[#2563EB]/10 text-[#2563EB] dark:text-[#60A5FA] flex items-center justify-center shrink-0">
+            <GraduationCap className="w-5 h-5" />
+          </span>
+          <div>
+            <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA]">
+              Goethe-Zertifikat · ÖSD · telc Mock Exams
+            </p>
+            <h2 className="font-display font-bold text-base sm:text-lg text-[var(--ink-primary)]">
+              Preparing for an official German exam? Practice Hören & Schreiben!
+            </h2>
+            <p className="text-xs sm:text-sm text-[var(--ink-secondary)]">
+              16 timed mock tests (A1–B2) with 1×/2× listening rules, Leitpunkte checklists, Redemittel chips & 100-point rubric grading.
+            </p>
+          </div>
+        </div>
+        <button
+          id="btn-banner-open-exams"
+          type="button"
+          onClick={onOpenExams}
+          className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#2563EB] text-white text-xs sm:text-sm font-semibold hover:bg-blue-700 transition-colors cursor-pointer shrink-0 shadow-xs"
+        >
+          <span>Open Exam Studio</span>
+          <ArrowRight className="w-4 h-4" />
+        </button>
+      </div>
+
       {/* Studio Filter & Progress Header */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-[var(--border-subtle)]">
         <div>

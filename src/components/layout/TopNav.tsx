@@ -9,6 +9,7 @@ import {
   Settings,
   Compass,
   Award,
+  GraduationCap,
 } from 'lucide-react';
 import type { ActiveTab } from '../../types/grammar';
 
@@ -45,6 +46,7 @@ export function TopNav({
     badge?: number;
   }> = [
     { id: 'roadmap', label: 'Roadmap', shortLabel: 'Learn', icon: Compass },
+    { id: 'exam', label: 'Exams', shortLabel: 'Exam', icon: GraduationCap },
     { id: 'sprint', label: 'Verb Sprint', shortLabel: 'Sprint', icon: Zap },
     {
       id: 'vault',
@@ -58,7 +60,7 @@ export function TopNav({
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border-subtle)] bg-[var(--bg-canvas)]/92 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
         {/* Brand Logo */}
         <button
           id="nav-logo"
@@ -80,14 +82,14 @@ export function TopNav({
             <span className="block font-display font-extrabold text-lg tracking-tight text-[var(--ink-primary)]">
               SatzKlar
             </span>
-            <span className="hidden sm:block text-[11px] font-medium text-[var(--ink-muted)]">
-              German Grammar Studio
+            <span className="hidden xl:block text-[11px] font-medium text-[var(--ink-muted)]">
+              German Grammar & Exam Studio
             </span>
           </div>
         </button>
 
         {/* Desktop Primary Tabs */}
-        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1 p-1 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)]">
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)]">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = activeTab === item.id && !inActiveDrill;
@@ -97,7 +99,7 @@ export function TopNav({
                 id={`nav-tab-${item.id}`}
                 type="button"
                 onClick={() => onSelectTab(item.id)}
-                className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                className={`relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   active
                     ? 'bg-[var(--bg-surface)] text-[var(--ink-primary)] shadow-xs'
                     : 'text-[var(--ink-secondary)] hover:text-[var(--ink-primary)]'
@@ -146,7 +148,7 @@ export function TopNav({
             className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#1C1917] text-[#FAF8F5] dark:bg-slate-100 dark:text-slate-900 text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
           >
             <BookOpen className="w-4 h-4 shrink-0" />
-            <span className="hidden lg:inline">Cheat Sheet</span>
+            <span className="hidden xl:inline">Cheat Sheet</span>
           </button>
 
           {/* Settings */}
@@ -175,10 +177,10 @@ export function TopNav({
         </div>
       </div>
 
-      {/* Mobile Navigation Bar */}
+      {/* Mobile / Tablet Navigation Bar */}
       <nav
         aria-label="Mobile navigation"
-        className="md:hidden border-t border-[var(--border-subtle)] bg-[var(--bg-surface)]/95 px-2 py-1.5 grid grid-cols-4 gap-1"
+        className="lg:hidden border-t border-[var(--border-subtle)] bg-[var(--bg-surface)]/95 px-2 py-1.5 grid grid-cols-5 gap-1"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
