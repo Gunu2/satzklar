@@ -1459,16 +1459,19 @@ export function VirtualChatRoom({
         </div>
         <div className="flex flex-wrap items-center gap-2 shrink-0">
           {COMMUNITY_CONFIG.tipLinks.map((tip) => (
-            <a
-              key={tip.label}
-              href={tip.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[#D97706] text-xs font-semibold text-[var(--ink-primary)] transition-colors"
+            <button
+              key={tip.id}
+              type="button"
+              onClick={() => {
+                void navigator.clipboard?.writeText(tip.copyValue);
+                setReportConfirmation(`Copied ${tip.label}: ${tip.copyValue} — thank you for supporting SatzKlar!`);
+                window.setTimeout(() => setReportConfirmation(null), 3500);
+              }}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[#D97706] text-xs font-semibold text-[var(--ink-primary)] transition-colors cursor-pointer"
             >
               <Coffee className="w-3.5 h-3.5 text-[#D97706]" />
-              <span>{tip.label}</span>
-            </a>
+              <span>{tip.id === 'ewallet-id' ? 'E-Wallet (Copy)' : 'PayPal (Copy)'}</span>
+            </button>
           ))}
         </div>
       </div>

@@ -21,6 +21,7 @@ import {
   removeMistake,
 } from './utils/srs';
 import { TopNav } from './components/layout/TopNav';
+import { StudioFooter } from './components/layout/StudioFooter';
 import { WelcomeCard } from './components/onboarding/WelcomeCard';
 import { PlacementModal } from './components/onboarding/PlacementModal';
 import { LearningPath } from './components/roadmap/LearningPath';
@@ -430,16 +431,7 @@ export function App() {
         )}
       </main>
 
-      <footer className="border-t border-[var(--border-subtle)] py-5 px-4 sm:px-6 mt-8">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[var(--ink-muted)]">
-          <p>
-            <strong className="text-[var(--ink-secondary)]">SatzKlar</strong> — Open-Source German Grammar Studio (A1–B2). 100% browser-local · MIT License.
-          </p>
-          <p className="font-mono">
-            Add lessons via <code className="text-[var(--ink-secondary)]">src/data/lessons/*.json</code>
-          </p>
-        </div>
-      </footer>
+      <StudioFooter />
 
       {/* Modals & Drawers */}
       {showPlacement && (

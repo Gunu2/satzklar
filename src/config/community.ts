@@ -14,14 +14,18 @@ export const COMMUNITY_CONFIG = {
   supabaseAnonKey: 'sb_publishable_KCPwps8uKpDKHS1cvZW1NA_-Xhov1Cc',
   tipLinks: [
     {
-      label: 'Saweria (ID / QRIS)',
-      url: 'https://saweria.co/',
-      note: 'QRIS, GoPay, OVO, Dana',
+      id: 'ewallet-id',
+      label: 'E-Wallet Indonesia (GoPay / OVO / Dana)',
+      copyValue: '081299592294',
+      url: '',
+      note: 'GoPay, OVO, Dana, ShopeePay · Tap to copy number',
     },
     {
-      label: 'Ko-fi (Global)',
-      url: 'https://ko-fi.com/',
-      note: '0% fee · PayPal & Card',
+      id: 'paypal-global',
+      label: 'PayPal (Global)',
+      copyValue: 'chefgemoy@gmail.com',
+      url: 'https://www.paypal.com/myaccount/transfer/homepage',
+      note: 'International learners · Send via PayPal email',
     },
   ],
   githubDiscussionsUrl: 'https://github.com/Gunu2/satzklar/discussions',
@@ -109,9 +113,21 @@ create policy "dm_insert_clean" on public.direct_messages for insert with check 
 
 create policy "reports_insert_all" on public.chat_reports for insert with check (true);
 
+create table if not exists public.site_ratings (
+  id uuid primary key default gen_random_uuid(),
+  stars integer not null check (stars between 1 and 5),
+  note text not null default '' check (char_length(note) <= 240),
+  created_at timestamptz not null default now()
+);
+
+alter table public.site_ratings enable row level security;
+create policy "ratings_select_all" on public.site_ratings for select using (true);
+create policy "ratings_insert_all" on public.site_ratings for insert with check (stars between 1 and 5);
+
 grant usage on schema public to anon, authenticated;
 grant select, insert, update on public.chat_profiles to anon, authenticated;
 grant select, insert on public.chat_messages to anon, authenticated;
 grant select, insert on public.direct_messages to anon, authenticated;
 grant insert on public.chat_reports to anon, authenticated;
+grant select, insert on public.site_ratings to anon, authenticated;
 `;
