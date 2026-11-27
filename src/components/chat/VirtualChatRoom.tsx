@@ -16,6 +16,7 @@ import {
   Mail,
   MessageCircle,
   MessageSquare,
+  Radio,
   Send,
   Shield,
   ShieldAlert,
@@ -32,6 +33,7 @@ import { COMMUNITY_CONFIG, SUPABASE_SQL_SCHEMA } from '../../config/community';
 import { useLanguage } from '../../i18n/useLanguage';
 import { analyzeSentenceLocally } from '../../utils/sentenceDoctor';
 import { AudioButton } from '../drill/AudioButton';
+import { PartyRoomView } from './PartyRoomView';
 import {
   isValidEmail,
   loadBlockedUsers,
@@ -134,6 +136,9 @@ export function VirtualChatRoom({
   const [bioInput, setBioInput] = useState<string>(profile?.bio ?? '');
   const [entryError, setEntryError] = useState<string | null>(null);
   const [authNotice, setAuthNotice] = useState<string | null>(null);
+
+  // Lounge sub-mode: Text Rooms & DM vs. Tandem-style Live Language Parties
+  const [loungeMode, setLoungeMode] = useState<'text' | 'parties'>('text');
 
   // Rooms, Members & Private 1-on-1 Chat state
   const [activeRoom, setActiveRoom] = useState<ChatRoomId>('general');
@@ -695,7 +700,7 @@ export function VirtualChatRoom({
 
   // --- MAIN MULTI-ROOM + PRIVATE DM WORKSPACE ---
   return (
-    <div className="space-y-5 animate-slide-up">
+    <div className="space-y-5">
       {/* Top Status & Profile Header */}
       <div className="paper-card rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-start gap-3">
@@ -814,8 +819,50 @@ export function VirtualChatRoom({
         </div>
       )}
 
-      {/* Mobile Panel Switcher */}
-      <div className="lg:hidden grid grid-cols-3 gap-1 p-1 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)]">
+      {/* Lounge Mode Switcher: Text Rooms & Private DM vs. Live Voice Language Parties */}
+      <div
+        role="tablist"
+        aria-label="Study Lounge Mode"
+        className="grid grid-cols-2 gap-1.5 p-1.5 rounded-2xl bg-[var(--bg-well)] border border-[var(--border-subtle)]"
+      >
+        <button
+          id="lounge-mode-text"
+          type="button"
+          role="tab"
+          aria-selected={loungeMode === 'text'}
+          onClick={() => setLoungeMode('text')}
+          className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            loungeMode === 'text'
+              ? 'bg-[var(--bg-surface)] text-[var(--ink-primary)] shadow-xs'
+              : 'text-[var(--ink-secondary)] hover:text-[var(--ink-primary)]'
+          }`}
+        >
+          <MessageSquare className="w-4 h-4 text-[#2563EB]" />
+          <span>Text Rooms &amp; Private DM</span>
+        </button>
+        <button
+          id="lounge-mode-parties"
+          type="button"
+          role="tab"
+          aria-selected={loungeMode === 'parties'}
+          onClick={() => setLoungeMode('parties')}
+          className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            loungeMode === 'parties'
+              ? 'bg-[var(--bg-surface)] text-[var(--ink-primary)] shadow-xs'
+              : 'text-[var(--ink-secondary)] hover:text-[var(--ink-primary)]'
+          }`}
+        >
+          <Radio className="w-4 h-4 text-[#E11D48]" />
+          <span>Language Parties (Voice Stage)</span>
+        </button>
+      </div>
+
+      {loungeMode === 'parties' ? (
+        <PartyRoomView profile={profile} supabaseConn={supabaseConn} />
+      ) : (
+        <>
+          {/* Mobile Panel Switcher */}
+          <div className="lg:hidden grid grid-cols-3 gap-1 p-1 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)]">
         <button
           type="button"
           onClick={() => setMobilePanel('rooms')}
@@ -1381,6 +1428,8 @@ export function VirtualChatRoom({
           </div>
         </aside>
       </div>
+        </>
+      )}
 
       {/* Expandable Global Multi-User Supabase Setup Guide (Only shown when user clicks or not yet configured) */}
       {showSetupGuide && (
