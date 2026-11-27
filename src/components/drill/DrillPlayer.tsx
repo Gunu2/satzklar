@@ -356,7 +356,10 @@ export function DrillPlayer({
                 >
                   {isCorrect ? 'Richtig! (+15 XP)' : 'Not quite — here is why:'}
                 </p>
-                <p className="font-semibold text-sm sm:text-base text-[var(--ink-primary)] mt-0.5">
+                <p
+                  translate="no"
+                  className="notranslate font-semibold text-sm sm:text-base text-[var(--ink-primary)] mt-0.5"
+                >
                   {exercise.fullGerman}
                 </p>
                 <p className="text-xs text-[var(--ink-secondary)]">{exercise.english}</p>

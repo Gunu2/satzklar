@@ -111,7 +111,10 @@ export function CaseDrillView({
 
       {/* Main Prompt Sentence */}
       <div className="paper-well rounded-2xl p-5 sm:p-6">
-        <p className="font-display text-2xl sm:text-[26px] font-bold text-[var(--ink-primary)] leading-relaxed">
+        <p
+          translate="no"
+          className="notranslate font-display text-2xl sm:text-[26px] font-bold text-[var(--ink-primary)] leading-relaxed"
+        >
           {renderPrompt()}
         </p>
         <p className="text-sm text-[var(--ink-muted)] mt-2.5">{exercise.english}</p>
@@ -124,7 +127,10 @@ export function CaseDrillView({
           >
             <div className="flex flex-wrap items-center gap-2 mb-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
-              <span className="font-display font-bold text-sm text-[var(--ink-primary)]">
+              <span
+                translate="no"
+                className="notranslate font-display font-bold text-sm text-[var(--ink-primary)]"
+              >
                 {activeHint.baseForm}
               </span>
               <GenderBadge gender={activeHint.gender} size="xs" />
@@ -142,7 +148,8 @@ export function CaseDrillView({
       {/* Multiple Choice Grid (1-4) */}
       <div
         key={shakeKey}
-        className={`grid grid-cols-2 gap-3 ${
+        translate="no"
+        className={`notranslate grid grid-cols-2 gap-3 ${
           isAnswered && selectedOption !== exercise.correctIndex ? 'animate-shake' : ''
         }`}
       >

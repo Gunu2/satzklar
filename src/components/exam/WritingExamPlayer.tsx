@@ -468,11 +468,14 @@ export function WritingExamPlayer({
                 <AudioButton text={exam.modelAnswer.text} compact />
               </div>
 
-              <div className="p-4 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] text-sm text-[var(--ink-primary)] whitespace-pre-line leading-relaxed">
+              <div
+                translate="no"
+                className="notranslate p-4 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] text-sm text-[var(--ink-primary)] whitespace-pre-line leading-relaxed"
+              >
                 {exam.modelAnswer.text}
               </div>
 
-              <div className="flex flex-wrap gap-1.5">
+              <div translate="no" className="notranslate flex flex-wrap gap-1.5">
                 {exam.modelAnswer.highlightedPhrases.map((p) => (
                   <span
                     key={p}

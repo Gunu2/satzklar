@@ -1,6 +1,7 @@
 import { ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
 import { CEFR_SECTIONS, LESSONS, getTotalExerciseCount } from '../../data';
 import type { CEFRLevel, Lesson, LessonProgress } from '../../types/grammar';
+import { useLanguage } from '../../i18n/useLanguage';
 import { GenderBadge } from '../layout/GenderBadge';
 import { LessonCard } from './LessonCard';
 
@@ -25,6 +26,7 @@ export function LearningPath({
   onOpenPlacement,
   onOpenExams,
 }: LearningPathProps) {
+  const { t } = useLanguage();
   const completedCount = LESSONS.filter(
     (l) => (lessonProgress[l.id]?.mastery ?? 0) >= 85
   ).length;
@@ -48,13 +50,13 @@ export function LearningPath({
           </span>
           <div>
             <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA]">
-              Goethe-Zertifikat · ÖSD · telc Mock Exams
+              {t.examBannerTag}
             </p>
             <h2 className="font-display font-bold text-base sm:text-lg text-[var(--ink-primary)]">
-              Preparing for an official German exam? Practice Hören & Schreiben!
+              {t.examBannerTitle}
             </h2>
             <p className="text-xs sm:text-sm text-[var(--ink-secondary)]">
-              4 full-length Goethe/ÖSD Vollprüfungen (30-item Hören with live Antwortbogen + 60/75-min Schreiben with A–E Bewertungsbogen) plus 16 focused A1–B2 drills.
+              {t.examBannerDesc}
             </p>
           </div>
         </div>
@@ -64,7 +66,7 @@ export function LearningPath({
           onClick={onOpenExams}
           className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#2563EB] text-white text-xs sm:text-sm font-semibold hover:bg-blue-700 transition-colors cursor-pointer shrink-0 shadow-xs"
         >
-          <span>Open Exam Studio</span>
+          <span>{t.openExamStudio}</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
@@ -73,7 +75,7 @@ export function LearningPath({
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-[var(--border-subtle)]">
         <div>
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[var(--ink-primary)] tracking-tight">
-            Visual Learning Path
+            {t.roadmapTitle}
           </h2>
           <p className="text-sm text-[var(--ink-secondary)] mt-1">
             {LESSONS.length} structured units · {getTotalExerciseCount()} curated drills across A1–B2 ·{' '}

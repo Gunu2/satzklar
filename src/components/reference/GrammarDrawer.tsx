@@ -110,7 +110,7 @@ export function GrammarDrawer({ open, onClose }: GrammarDrawerProps) {
                         <th className="p-2.5"><GenderBadge gender="PL" size="xs" /></th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[var(--border-subtle)]">
+                    <tbody translate="no" className="notranslate divide-y divide-[var(--border-subtle)]">
                       {DEFINITE_ARTICLES.map((row) => (
                         <tr key={row.caseName} className="bg-[var(--bg-surface)]">
                           <td className="p-2.5">

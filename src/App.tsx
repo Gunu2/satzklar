@@ -41,6 +41,18 @@ const ExamStudioView = lazy(() =>
   }))
 );
 
+const VirtualChatRoom = lazy(() =>
+  import('./components/chat/VirtualChatRoom').then((m) => ({
+    default: m.VirtualChatRoom,
+  }))
+);
+
+const VocabMemorizerView = lazy(() =>
+  import('./components/vocab/VocabMemorizerView').then((m) => ({
+    default: m.VocabMemorizerView,
+  }))
+);
+
 interface ActiveDrillSession {
   id: string;
   title: string;
@@ -53,6 +65,7 @@ interface ActiveDrillSession {
 export function App() {
   const [progress, setProgress] = useState<UserProgress>(() => loadProgress());
   const [geminiApiKey, setGeminiApiKey] = useState<string>(() => loadGeminiApiKey());
+  const [supabaseVersion, setSupabaseVersion] = useState(0);
 
   const [activeTab, setActiveTab] = useState<ActiveTab>('roadmap');
   const [levelFilter, setLevelFilter] = useState<'All' | CEFRLevel>(
@@ -270,6 +283,16 @@ export function App() {
     []
   );
 
+  const handleEarnVocabXp = useCallback((amount: number) => {
+    setProgress((prev) => {
+      const touched = touchStudyStreak(prev);
+      return {
+        ...touched,
+        xp: touched.xp + amount,
+      };
+    });
+  }, []);
+
   const handleSaveKey = (key: string) => {
     saveGeminiApiKey(key);
     setGeminiApiKey(key);
@@ -338,6 +361,19 @@ export function App() {
               onOpenExams={() => setActiveTab('exam')}
             />
           </>
+        ) : activeTab === 'vocab' ? (
+          <Suspense
+            fallback={
+              <div className="paper-card rounded-2xl p-8 text-center text-sm text-[var(--ink-muted)]">
+                Loading A1–B2 Wortschatz Memorization Studio…
+              </div>
+            }
+          >
+            <VocabMemorizerView
+              onEarnXp={handleEarnVocabXp}
+              onOpenSettings={() => setSettingsOpen(true)}
+            />
+          </Suspense>
         ) : activeTab === 'exam' ? (
           <Suspense
             fallback={
@@ -352,6 +388,19 @@ export function App() {
               geminiApiKey={geminiApiKey}
               onOpenSettings={() => setSettingsOpen(true)}
               onRecordExamResult={handleRecordExamResult}
+            />
+          </Suspense>
+        ) : activeTab === 'chat' ? (
+          <Suspense
+            fallback={
+              <div className="paper-card rounded-2xl p-8 text-center text-sm text-[var(--ink-muted)]">
+                Loading Virtual German Study Lounge…
+              </div>
+            }
+          >
+            <VirtualChatRoom
+              onOpenSettings={() => setSettingsOpen(true)}
+              supabaseVersion={supabaseVersion}
             />
           </Suspense>
         ) : activeTab === 'sprint' ? (
@@ -419,6 +468,7 @@ export function App() {
           progress={progress}
           geminiApiKey={geminiApiKey}
           onSaveGeminiKey={handleSaveKey}
+          onSupabaseUpdated={() => setSupabaseVersion((v) => v + 1)}
           onImportProgress={(imported) => setProgress(imported)}
           onResetProgress={handleResetProgress}
           onClose={() => setSettingsOpen(false)}

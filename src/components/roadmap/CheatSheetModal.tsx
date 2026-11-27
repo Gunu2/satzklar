@@ -46,7 +46,9 @@ export function CheatSheetModal({
             <h2 className="font-display font-extrabold text-xl text-[var(--ink-primary)]">
               {lesson.title}
             </h2>
-            <p className="font-mono text-xs text-[var(--ink-muted)]">{lesson.germanTitle}</p>
+            <p translate="no" className="notranslate font-mono text-xs text-[var(--ink-muted)]">
+              {lesson.germanTitle}
+            </p>
           </div>
           <button
             type="button"
@@ -94,13 +96,19 @@ export function CheatSheetModal({
                   className="paper-well rounded-xl p-3.5 flex flex-col justify-between gap-2"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-xs font-bold text-[var(--ink-primary)]">
+                    <span
+                      translate="no"
+                      className="notranslate font-mono text-xs font-bold text-[var(--ink-primary)]"
+                    >
                       {p.formula}
                     </span>
                     {p.gender && <GenderBadge gender={p.gender} size="xs" />}
                   </div>
                   <div>
-                    <p className="font-semibold text-sm text-[var(--ink-primary)]">
+                    <p
+                      translate="no"
+                      className="notranslate font-semibold text-sm text-[var(--ink-primary)]"
+                    >
                       {p.example}
                     </p>
                     <p className="text-xs text-[var(--ink-muted)]">{p.translation}</p>

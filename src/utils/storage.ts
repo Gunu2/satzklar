@@ -84,13 +84,26 @@ export function touchStudyStreak(progress: UserProgress): UserProgress {
   };
 }
 
+const VOCAB_BACKUP_STORAGE_KEY = 'satzklar_vocab_memory_v1';
+
 export function exportProgressJSON(progress: UserProgress): string {
+  let vocabMemory: unknown = undefined;
+  if (typeof window !== 'undefined') {
+    try {
+      const rawVocab = window.localStorage.getItem(VOCAB_BACKUP_STORAGE_KEY);
+      if (rawVocab) vocabMemory = JSON.parse(rawVocab);
+    } catch {
+      // Ignore storage error
+    }
+  }
+
   return JSON.stringify(
     {
       app: 'SatzKlar',
-      version: 1,
+      version: 2,
       exportedAt: new Date().toISOString(),
       progress,
+      vocabMemory,
     },
     null,
     2
@@ -147,6 +160,25 @@ export function parseImportedProgress(jsonText: string): {
       verbSprintBestStreak: Math.max(0, Math.floor(Number(candidate.verbSprintBestStreak) || 0)),
       theme: candidate.theme === 'dark' ? 'dark' : 'light',
     };
+
+    // Also restore saved Wortschatz memorization timeline if present in backup
+    if (
+      typeof window !== 'undefined' &&
+      parsed &&
+      typeof parsed === 'object' &&
+      'vocabMemory' in parsed &&
+      parsed.vocabMemory &&
+      typeof parsed.vocabMemory === 'object'
+    ) {
+      try {
+        window.localStorage.setItem(
+          VOCAB_BACKUP_STORAGE_KEY,
+          JSON.stringify(parsed.vocabMemory)
+        );
+      } catch {
+        // Ignore storage error
+      }
+    }
 
     return { ok: true, progress: merged };
   } catch {

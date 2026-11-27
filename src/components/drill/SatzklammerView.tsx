@@ -195,7 +195,8 @@ export function SatzklammerView({
       {/* Sentence Construction Tray */}
       <div
         key={shakeKey}
-        className={`min-h-24 p-4 rounded-2xl border-2 border-dashed transition-all flex flex-wrap items-center gap-2 ${
+        translate="no"
+        className={`notranslate min-h-24 p-4 rounded-2xl border-2 border-dashed transition-all flex flex-wrap items-center gap-2 ${
           isAnswered
             ? isCorrect
               ? 'border-[#059669] bg-emerald-50/50 dark:bg-emerald-950/30'
@@ -232,7 +233,7 @@ export function SatzklammerView({
       </div>
 
       {/* Available Word Tile Bank */}
-      <div className="flex flex-wrap gap-2.5 min-h-14">
+      <div translate="no" className="notranslate flex flex-wrap gap-2.5 min-h-14">
         {availableTokens.map((token, idx) => (
           <button
             key={token.id}

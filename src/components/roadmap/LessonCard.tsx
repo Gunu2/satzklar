@@ -83,7 +83,7 @@ export function LessonCard({
         <h3 className="font-display font-bold text-lg text-[var(--ink-primary)] leading-snug mb-0.5">
           {lesson.title}
         </h3>
-        <p className="font-mono text-xs text-[var(--ink-muted)] mb-2.5">
+        <p translate="no" className="notranslate font-mono text-xs text-[var(--ink-muted)] mb-2.5">
           {lesson.germanTitle}
         </p>
         <p className="text-sm text-[var(--ink-secondary)] leading-relaxed mb-4">

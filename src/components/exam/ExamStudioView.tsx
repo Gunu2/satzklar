@@ -27,6 +27,7 @@ import { ListeningExamPlayer } from './ListeningExamPlayer';
 import { WritingExamPlayer } from './WritingExamPlayer';
 import { FullListeningExamPlayer } from './FullListeningExamPlayer';
 import { FullWritingExamPlayer } from './FullWritingExamPlayer';
+import { useLanguage } from '../../i18n/useLanguage';
 
 const FULL_LISTENING_PAPERS: FullListeningPaper[] = [
   FULL_LISTENING_B1,
@@ -54,6 +55,7 @@ export function ExamStudioView({
   onOpenSettings,
   onRecordExamResult,
 }: ExamStudioViewProps) {
+  const { t } = useLanguage();
   const [skillFilter, setSkillFilter] = useState<'all' | 'hoeren' | 'schreiben'>('all');
   const [cefrFilter, setCefrFilter] = useState<'All' | CEFRLevel>('All');
   const [instituteFilter, setInstituteFilter] = useState<'All' | ExamInstitute>('All');
@@ -186,10 +188,10 @@ export function ExamStudioView({
               <span>Goethe-Zertifikat · ÖSD · telc · Prüfungssimulator</span>
             </div>
             <h1 className="font-display text-2xl sm:text-4xl font-extrabold text-[var(--ink-primary)] tracking-tight leading-tight">
-              Prüfungstraining: Real Mock Exams
+              {t.examHeroTitle}
             </h1>
             <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed">
-              Sit authentic full-length <strong>30-item Hören</strong> papers (4 Teile, 1×/2× replay limits, live <em>Antwortbogen</em>) and complete <strong>60/75-minute Schreiben</strong> papers graded on the official Goethe/ÖSD <strong>A–E Bewertungsbogen</strong> (pass ≥ 60 Punkte).
+              {t.examHeroDesc}
             </p>
           </div>
 

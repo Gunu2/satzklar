@@ -118,12 +118,15 @@ export function PlacementModal({ onComplete, onClose }: PlacementModalProps) {
                 </span>
               </div>
 
-              <p className="font-display text-xl sm:text-2xl font-bold text-[var(--ink-primary)] leading-snug mb-1.5">
+              <p
+                translate="no"
+                className="notranslate font-display text-xl sm:text-2xl font-bold text-[var(--ink-primary)] leading-snug mb-1.5"
+              >
                 {current.prompt}
               </p>
               <p className="text-sm text-[var(--ink-muted)] mb-5">{current.english}</p>
 
-              <div className="grid grid-cols-2 gap-2.5 mb-5">
+              <div translate="no" className="notranslate grid grid-cols-2 gap-2.5 mb-5">
                 {current.options.map((opt, idx) => {
                   const isSelected = selected === idx;
                   const isRight = idx === current.correctIndex;

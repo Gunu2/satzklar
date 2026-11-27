@@ -329,13 +329,16 @@ export function VerbSprintView({
           </div>
 
           <div>
-            <p className="font-display text-xl sm:text-2xl font-bold text-[var(--ink-primary)] leading-snug">
+            <p
+              translate="no"
+              className="notranslate font-display text-xl sm:text-2xl font-bold text-[var(--ink-primary)] leading-snug"
+            >
               {current.prompt}
             </p>
             <p className="text-sm text-[var(--ink-muted)] mt-1">{current.english}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div translate="no" className="notranslate grid grid-cols-2 gap-3">
             {current.options.map((opt, idx) => (
               <button
                 key={`${current.id}-${idx}`}

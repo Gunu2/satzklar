@@ -273,4 +273,4 @@ export interface SentenceAnalysisResult {
   praise?: string;
 }
 
-export type ActiveTab = 'roadmap' | 'exam' | 'sprint' | 'vault' | 'doctor';
+export type ActiveTab = 'roadmap' | 'vocab' | 'exam' | 'chat' | 'sprint' | 'vault' | 'doctor';

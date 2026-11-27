@@ -564,7 +564,7 @@ export function FullWritingExamPlayer({
                     <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--ink-muted)]">
                       {group.section} · {group.category}
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div translate="no" className="notranslate flex flex-wrap gap-1.5">
                       {group.phrases.map((phrase) => (
                         <button
                           key={phrase}
@@ -595,7 +595,10 @@ export function FullWritingExamPlayer({
                 </span>
                 <AudioButton text={activeTask.modelAnswer.text} compact />
               </div>
-              <div className="p-4 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] text-sm text-[var(--ink-primary)] whitespace-pre-line leading-relaxed">
+              <div
+                translate="no"
+                className="notranslate p-4 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] text-sm text-[var(--ink-primary)] whitespace-pre-line leading-relaxed"
+              >
                 {activeTask.modelAnswer.text}
               </div>
               <p className="text-xs text-[var(--ink-secondary)]">

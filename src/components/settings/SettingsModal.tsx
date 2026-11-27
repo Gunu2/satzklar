@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   Check,
+  Database,
   Download,
   Eye,
   EyeOff,
@@ -16,12 +17,17 @@ import {
   getTodayISO,
   parseImportedProgress,
 } from '../../utils/storage';
+import {
+  loadSupabaseConnection,
+  saveSupabaseConnection,
+} from '../../utils/chatBackend';
 
 interface SettingsModalProps {
   open: boolean;
   progress: UserProgress;
   geminiApiKey: string;
   onSaveGeminiKey: (key: string) => void;
+  onSupabaseUpdated?: () => void;
   onImportProgress: (imported: UserProgress) => void;
   onResetProgress: () => void;
   onClose: () => void;
@@ -32,13 +38,18 @@ export function SettingsModal({
   progress,
   geminiApiKey,
   onSaveGeminiKey,
+  onSupabaseUpdated,
   onImportProgress,
   onResetProgress,
   onClose,
 }: SettingsModalProps) {
+  const initialSb = loadSupabaseConnection();
   const [keyInput, setKeyInput] = useState(geminiApiKey);
   const [showKey, setShowKey] = useState(false);
   const [keySavedFlash, setKeySavedFlash] = useState(false);
+  const [sbUrlInput, setSbUrlInput] = useState(initialSb.url);
+  const [sbKeyInput, setSbKeyInput] = useState(initialSb.anonKey);
+  const [sbSavedFlash, setSbSavedFlash] = useState(false);
   const [importStatus, setImportStatus] = useState<{
     type: 'success' | 'error';
     text: string;
@@ -61,6 +72,13 @@ export function SettingsModal({
     onSaveGeminiKey(keyInput.trim());
     setKeySavedFlash(true);
     window.setTimeout(() => setKeySavedFlash(false), 1800);
+  };
+
+  const handleSaveSupabase = () => {
+    saveSupabaseConnection(sbUrlInput, sbKeyInput);
+    onSupabaseUpdated?.();
+    setSbSavedFlash(true);
+    window.setTimeout(() => setSbSavedFlash(false), 1800);
   };
 
   const handleExport = () => {
@@ -171,6 +189,54 @@ export function SettingsModal({
               <ShieldCheck className="w-3.5 h-3.5 text-[#059669] shrink-0" />
               Stored strictly in your browser’s localStorage — never sent anywhere except Google’s Gemini API when you check a sentence.
             </p>
+          </section>
+
+          {/* Optional Global Multi-User Live Chat (Supabase) */}
+          <section className="space-y-2.5 pt-4 border-t border-[var(--border-subtle)]">
+            <div className="flex items-center gap-2">
+              <Database className="w-4 h-4 text-[#2563EB]" />
+              <h3 className="font-display font-bold text-sm text-[var(--ink-primary)]">
+                Global Live Chat Room (Optional Supabase DB)
+              </h3>
+            </div>
+            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
+              Connect a free Supabase project (or set keys in <code className="font-mono">src/config/community.ts</code>) to enable real-time worldwide rooms, online learner profiles, and 1-on-1 private DMs.
+            </p>
+            <div className="space-y-2">
+              <input
+                id="input-supabase-url"
+                type="url"
+                value={sbUrlInput}
+                onChange={(e) => setSbUrlInput(e.target.value)}
+                placeholder="https://your-project.supabase.co"
+                className="w-full px-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
+              />
+              <div className="flex gap-2">
+                <input
+                  id="input-supabase-key"
+                  type="password"
+                  value={sbKeyInput}
+                  onChange={(e) => setSbKeyInput(e.target.value)}
+                  placeholder="Supabase public anon key (eyJ...)"
+                  className="flex-1 px-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
+                />
+                <button
+                  id="btn-save-supabase"
+                  type="button"
+                  onClick={handleSaveSupabase}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-semibold cursor-pointer shrink-0"
+                >
+                  {sbSavedFlash ? (
+                    <>
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Saved</span>
+                    </>
+                  ) : (
+                    <span>Connect</span>
+                  )}
+                </button>
+              </div>
+            </div>
           </section>
 
           {/* JSON Export / Import */}

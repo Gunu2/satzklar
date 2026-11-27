@@ -366,7 +366,10 @@ export function ListeningExamPlayer({
                     <p className="font-mono text-[11px] font-bold text-[#2563EB] dark:text-[#60A5FA] mb-0.5">
                       {line.speaker}
                     </p>
-                    <p className="text-sm text-[var(--ink-primary)] leading-relaxed">
+                    <p
+                      translate="no"
+                      className="notranslate text-sm text-[var(--ink-primary)] leading-relaxed"
+                    >
                       {line.text}
                     </p>
                     {showEnglish && (
@@ -389,7 +392,7 @@ export function ListeningExamPlayer({
                       key={v.german}
                       className="text-xs px-2.5 py-1 rounded-lg bg-[var(--bg-well)] border border-[var(--border-subtle)] text-[var(--ink-primary)]"
                     >
-                      <strong>{v.german}</strong> — {v.english}
+                      <strong translate="no" className="notranslate">{v.german}</strong> — {v.english}
                     </span>
                   ))}
                 </div>
@@ -462,7 +465,10 @@ export function ListeningExamPlayer({
                   <span className="font-mono text-xs font-bold px-2 py-1 rounded-md bg-[var(--bg-well)] text-[var(--ink-primary)] shrink-0 mt-0.5">
                     {qIdx + 1}
                   </span>
-                  <h2 className="font-display font-bold text-base sm:text-lg text-[var(--ink-primary)] leading-snug">
+                  <h2
+                    translate="no"
+                    className="notranslate font-display font-bold text-base sm:text-lg text-[var(--ink-primary)] leading-snug"
+                  >
                     {q.prompt}
                   </h2>
                 </div>
@@ -472,7 +478,8 @@ export function ListeningExamPlayer({
               </div>
 
               <div
-                className={`grid gap-2.5 ${
+                translate="no"
+                className={`notranslate grid gap-2.5 ${
                   q.format === 'rf' ? 'grid-cols-2' : 'grid-cols-1'
                 }`}
               >

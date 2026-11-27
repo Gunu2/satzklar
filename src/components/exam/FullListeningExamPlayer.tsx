@@ -548,7 +548,10 @@ export function FullListeningExamPlayer({
                           <p className="font-mono text-[11px] font-bold text-[#2563EB] dark:text-[#60A5FA]">
                             {line.speaker}
                           </p>
-                          <p className="text-[var(--ink-primary)] leading-relaxed mt-0.5">
+                          <p
+                            translate="no"
+                            className="notranslate text-[var(--ink-primary)] leading-relaxed mt-0.5"
+                          >
                             {line.text}
                           </p>
                           {showEnglish && (
@@ -597,11 +600,17 @@ export function FullListeningExamPlayer({
                                       {item.number}
                                     </span>
                                     <div className="space-y-1.5">
-                                      <p className="text-sm font-medium text-[var(--ink-primary)] leading-snug">
+                                      <p
+                                        translate="no"
+                                        className="notranslate text-sm font-medium text-[var(--ink-primary)] leading-snug"
+                                      >
                                         {item.prompt}
                                       </p>
                                       {submitted && (
-                                        <p className="text-xs text-[var(--ink-secondary)] bg-[var(--bg-well)] p-2 rounded-lg">
+                                        <p
+                                          translate="no"
+                                          className="notranslate text-xs text-[var(--ink-secondary)] bg-[var(--bg-well)] p-2 rounded-lg"
+                                        >
                                           <strong className="text-[#059669]">
                                             {item.options[item.correctIndex]}:
                                           </strong>{' '}
@@ -671,13 +680,17 @@ export function FullListeningExamPlayer({
                               <span className="font-mono text-xs font-extrabold px-2 py-0.5 rounded bg-[var(--bg-well)] text-[var(--ink-primary)] shrink-0 mt-0.5">
                                 {item.number}
                               </span>
-                              <p className="font-display font-bold text-sm sm:text-base text-[var(--ink-primary)] leading-snug">
+                              <p
+                                translate="no"
+                                className="notranslate font-display font-bold text-sm sm:text-base text-[var(--ink-primary)] leading-snug"
+                              >
                                 {item.prompt}
                               </p>
                             </div>
 
                             <div
-                              className={`grid gap-2 ${
+                              translate="no"
+                              className={`notranslate grid gap-2 ${
                                 item.format === 'rf' ? 'grid-cols-2' : 'grid-cols-1'
                               }`}
                             >

@@ -74,7 +74,7 @@ export function SpotFixView({
 
       {/* Interactive Tokenized Sentence */}
       <div className="paper-well rounded-2xl p-5 sm:p-6">
-        <div className="flex flex-wrap items-center gap-2 mb-3">
+        <div translate="no" className="notranslate flex flex-wrap items-center gap-2 mb-3">
           {exercise.sentenceTokens.map((tok, idx) => {
             const isTarget = idx === exercise.errorTokenIndex;
             const isWrongClick = wrongClickedIndex === idx;
@@ -146,7 +146,7 @@ export function SpotFixView({
           <p className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--ink-secondary)]">
             Replace “{exercise.sentenceTokens[exercise.errorTokenIndex]}” with:
           </p>
-          <div className="grid grid-cols-2 gap-3">
+          <div translate="no" className="notranslate grid grid-cols-2 gap-3">
             {exercise.fixOptions.map((opt, idx) => {
               const isSelected = selectedFix === idx;
               const isRight = idx === exercise.correctFixIndex;

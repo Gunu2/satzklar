@@ -1,5 +1,6 @@
-import { ArrowRight, Sparkles, X } from 'lucide-react';
+import { ArrowRight, Globe, Sparkles, X } from 'lucide-react';
 import type { CEFRLevel } from '../../types/grammar';
+import { useLanguage } from '../../i18n/useLanguage';
 import { GenderBadge } from '../layout/GenderBadge';
 
 interface WelcomeCardProps {
@@ -15,11 +16,28 @@ const LEVELS: Array<{ level: CEFRLevel; label: string; desc: string }> = [
   { level: 'B2', label: 'B2', desc: 'Genitive, Konjunktiv II & passive' },
 ];
 
+const QUICK_WORLD_LANGS = [
+  { code: 'en', label: '🇬🇧 English' },
+  { code: 'id', label: '🇮🇩 Indonesia' },
+  { code: 'ar', label: '🇸🇦 العربية' },
+  { code: 'es', label: '🇪🇸 Español' },
+  { code: 'fr', label: '🇫🇷 Français' },
+  { code: 'tr', label: '🇹🇷 Türkçe' },
+  { code: 'zh-CN', label: '🇨🇳 中文' },
+  { code: 'ja', label: '🇯🇵 日本語' },
+  { code: 'ko', label: '🇰🇷 한국어' },
+  { code: 'hi', label: '🇮🇳 हिन्दी' },
+  { code: 'vi', label: '🇻🇳 Tiếng Việt' },
+  { code: 'pt', label: '🇧🇷 Português' },
+];
+
 export function WelcomeCard({
   onSelectLevel,
   onStartPlacement,
   onDismiss,
 }: WelcomeCardProps) {
+  const { t, worldLangCode, selectWorldLanguage } = useLanguage();
+
   return (
     <section
       id="welcome-onboarding-card"
@@ -37,17 +55,52 @@ export function WelcomeCard({
 
       <div className="max-w-3xl">
         <p className="text-xs font-mono font-semibold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA] mb-1.5">
-          Zero-Signup · 100% Local · Visual German Grammar
+          {t.welcomeTag}
         </p>
         <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-[var(--ink-primary)] tracking-tight mb-2">
-          See the pattern behind every German sentence.
+          {t.welcomeTitle}
         </h1>
-        <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed mb-5">
-          Pick your starting CEFR level below, or take a 2-minute Quick Placement Check to find your exact spot. Every noun gender stays consistently color-coded across the studio:
+        <p className="text-sm sm:text-base text-[var(--ink-secondary)] leading-relaxed mb-4">
+          {t.welcomeDesc}
         </p>
 
+        {/* Native / Learning Language Quick Picker (100+ World Languages) */}
+        <div
+          translate="no"
+          className="notranslate mb-5 p-3 rounded-xl bg-[var(--bg-well)]/75 border border-[var(--border-subtle)] space-y-2"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+            <span className="font-semibold text-[var(--ink-primary)] inline-flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-[#2563EB]" />
+              <span>Choose Your Learning Language (100+ World Languages)</span>
+            </span>
+            <span className="text-[11px] text-[var(--ink-muted)]">
+              More languages in top-right 🌐 menu
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {QUICK_WORLD_LANGS.map((item) => {
+              const active = worldLangCode === item.code;
+              return (
+                <button
+                  key={item.code}
+                  type="button"
+                  onClick={() => selectWorldLanguage(item.code)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                    active
+                      ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-xs'
+                      : 'bg-[var(--bg-surface)] text-[var(--ink-secondary)] border-[var(--border-subtle)] hover:border-[#2563EB] hover:text-[var(--ink-primary)]'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Visual Gender Legend */}
-        <div className="flex flex-wrap items-center gap-2 mb-6">
+        <div translate="no" className="notranslate flex flex-wrap items-center gap-2 mb-6">
           <GenderBadge gender="M" showArticle size="md" />
           <GenderBadge gender="F" showArticle size="md" />
           <GenderBadge gender="N" showArticle size="md" />
@@ -85,14 +138,14 @@ export function WelcomeCard({
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1C1917] text-[#FAF8F5] dark:bg-slate-100 dark:text-slate-900 font-semibold text-sm hover:opacity-90 transition-opacity cursor-pointer shadow-sm"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Take 2-Minute Quick Placement Check</span>
+            <span>{t.takePlacement}</span>
           </button>
           <button
             type="button"
             onClick={onDismiss}
             className="px-3.5 py-2.5 rounded-xl text-sm font-medium text-[var(--ink-secondary)] hover:text-[var(--ink-primary)] hover:bg-[var(--bg-well)] transition-colors cursor-pointer"
           >
-            Browse all 12 lessons
+            {t.browseLessons}
           </button>
         </div>
       </div>

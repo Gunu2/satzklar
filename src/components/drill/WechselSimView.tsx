@@ -141,7 +141,10 @@ export function WechselSimView({
                 {activeExample.highlight}
               </span>
             </div>
-            <p className="font-display font-bold text-base text-[var(--ink-primary)]">
+            <p
+              translate="no"
+              className="notranslate font-display font-bold text-base text-[var(--ink-primary)]"
+            >
               {activeExample.german}
             </p>
             <p className="text-xs text-[var(--ink-muted)] mt-0.5 mb-2">
@@ -157,7 +160,10 @@ export function WechselSimView({
         <p className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--ink-muted)] mb-1.5">
           Now decide: Is this Wo? (Dativ) or Wohin? (Akkusativ)?
         </p>
-        <p className="font-display text-xl sm:text-2xl font-bold text-[var(--ink-primary)] leading-snug">
+        <p
+          translate="no"
+          className="notranslate font-display text-xl sm:text-2xl font-bold text-[var(--ink-primary)] leading-snug"
+        >
           {exercise.prompt}
         </p>
         <p className="text-sm text-[var(--ink-muted)] mt-1">{exercise.english}</p>
@@ -166,7 +172,8 @@ export function WechselSimView({
       {/* 4 Options */}
       <div
         key={shakeKey}
-        className={`grid grid-cols-2 gap-3 ${
+        translate="no"
+        className={`notranslate grid grid-cols-2 gap-3 ${
           isAnswered && selectedOption !== exercise.correctIndex ? 'animate-shake' : ''
         }`}
       >
