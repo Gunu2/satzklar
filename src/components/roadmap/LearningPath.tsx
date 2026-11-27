@@ -54,7 +54,7 @@ export function LearningPath({
               Preparing for an official German exam? Practice Hören & Schreiben!
             </h2>
             <p className="text-xs sm:text-sm text-[var(--ink-secondary)]">
-              16 timed mock tests (A1–B2) with 1×/2× listening rules, Leitpunkte checklists, Redemittel chips & 100-point rubric grading.
+              4 full-length Goethe/ÖSD Vollprüfungen (30-item Hören with live Antwortbogen + 60/75-min Schreiben with A–E Bewertungsbogen) plus 16 focused A1–B2 drills.
             </p>
           </div>
         </div>
