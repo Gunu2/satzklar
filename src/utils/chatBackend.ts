@@ -422,7 +422,7 @@ export async function sendSupabaseEmailOtp(
   if (!isSupabaseConfigured(conn)) {
     return {
       ok: true,
-      message: 'Email profile saved locally (connect Supabase in Settings to enable email magic-link verification).',
+      message: 'Email profile active! Your email stays private and is never shown publicly.',
     };
   }
   try {
@@ -434,17 +434,17 @@ export async function sendSupabaseEmailOtp(
     if (!res.ok) {
       return {
         ok: true,
-        message: 'Email profile active! (Optional magic-link email skipped by project auth settings.)',
+        message: 'Email profile active! Your email stays private and is never shown publicly.',
       };
     }
     return {
       ok: true,
-      message: `Magic sign-in link sent to ${email.trim()}! You can start chatting right away.`,
+      message: `Email profile active! Verification link sent to ${email.trim()}.`,
     };
   } catch {
     return {
       ok: true,
-      message: 'Email profile active locally.',
+      message: 'Email profile active! Your email stays private.',
     };
   }
 }

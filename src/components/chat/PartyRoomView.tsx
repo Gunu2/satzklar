@@ -3,10 +3,7 @@ import {
   AlertOctagon,
   ArrowDownToLine,
   ArrowLeft,
-  Check,
-  Copy,
   Crown,
-  Database,
   Hand,
   Headphones,
   Lock,
@@ -39,7 +36,6 @@ import {
   fetchPartyMessages,
   fetchPartyParticipants,
   PARTY_ICEBREAKERS,
-  PARTY_SQL_SCHEMA,
   postPartyMessage,
   removePartyParticipant,
   updatePartyRoomSettings,
@@ -74,8 +70,6 @@ export function PartyRoomView({ profile, supabaseConn }: PartyRoomViewProps) {
   const [rooms, setRooms] = useState<PartyRoom[]>([]);
   const [liveDbReady, setLiveDbReady] = useState<boolean>(false);
   const [levelFilter, setLevelFilter] = useState<PartyCefr>('ALL');
-  const [showSqlBanner, setShowSqlBanner] = useState(false);
-  const [copiedSql, setCopiedSql] = useState(false);
 
   // Create / Host Party modal state
   const [showHostModal, setShowHostModal] = useState(false);
@@ -609,16 +603,6 @@ export function PartyRoomView({ profile, supabaseConn }: PartyRoomViewProps) {
     });
     setMessages((prev) => [...prev, saved]);
     notifySync();
-  };
-
-  const handleCopySql = async () => {
-    try {
-      await navigator.clipboard.writeText(PARTY_SQL_SCHEMA);
-      setCopiedSql(true);
-      window.setTimeout(() => setCopiedSql(false), 2000);
-    } catch {
-      // Ignore clipboard error
-    }
   };
 
   // =========================================================================
@@ -1227,20 +1211,9 @@ export function PartyRoomView({ profile, supabaseConn }: PartyRoomViewProps) {
               <Radio className="w-3.5 h-3.5" />
               <span>German Language Parties · Voice Stage</span>
             </span>
-            {liveDbReady ? (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 text-[#047857] border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800">
-                GLOBAL LIVE AUDIO
-              </span>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setShowSqlBanner((s) => !s)}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-50 text-[#B45309] border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800 cursor-pointer"
-              >
-                <Database className="w-3 h-3" />
-                <span>Enable Global Parties (1 SQL)</span>
-              </button>
-            )}
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-50 text-[#047857] border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800">
+              {liveDbReady ? 'GLOBAL LIVE AUDIO' : 'LIVE VOICE STAGE'}
+            </span>
           </div>
           <h2 className="font-display font-extrabold text-xl sm:text-2xl text-[var(--ink-primary)]">
             Speak German Live Together — Host, Take a Seat, or Just Listen
@@ -1264,42 +1237,6 @@ export function PartyRoomView({ profile, supabaseConn }: PartyRoomViewProps) {
       {statusNotice && (
         <div className="px-4 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-[#047857] dark:text-emerald-300">
           {statusNotice}
-        </div>
-      )}
-
-      {/* Optional Party SQL Setup Guide */}
-      {showSqlBanner && (
-        <div className="paper-card rounded-2xl p-4 sm:p-5 space-y-3 border-amber-200 dark:border-amber-800">
-          <div className="flex items-start justify-between gap-2">
-            <div>
-              <h3 className="font-display font-bold text-sm text-[var(--ink-primary)]">
-                Activate Global Multi-User Voice Parties in Supabase (1 Minute)
-              </h3>
-              <p className="text-xs text-[var(--ink-secondary)] mt-0.5">
-                Run this SQL once in your Supabase <strong>SQL Editor</strong> so learners worldwide can host rooms, take seats, and talk live via WebRTC audio!
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowSqlBanner(false)}
-              className="p-1 text-[var(--ink-muted)] cursor-pointer"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-          <div className="relative">
-            <pre className="p-3 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--ink-secondary)] overflow-x-auto max-h-44">
-              {PARTY_SQL_SCHEMA}
-            </pre>
-            <button
-              type="button"
-              onClick={() => void handleCopySql()}
-              className="absolute top-2 right-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[11px] font-semibold text-[var(--ink-primary)] cursor-pointer"
-            >
-              {copiedSql ? <Check className="w-3.5 h-3.5 text-[#059669]" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedSql ? 'Copied SQL' : 'Copy SQL'}</span>
-            </button>
-          </div>
         </div>
       )}
 

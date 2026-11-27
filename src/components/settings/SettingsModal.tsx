@@ -6,6 +6,7 @@ import {
   Eye,
   EyeOff,
   KeyRound,
+  Lock,
   RotateCcw,
   ShieldCheck,
   Upload,
@@ -21,6 +22,22 @@ import {
   loadSupabaseConnection,
   saveSupabaseConnection,
 } from '../../utils/chatBackend';
+
+const OWNER_SESSION_KEY = 'satzklar_owner_panel_unlocked_v1';
+
+function detectInitialOwnerAccess(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('owner') === 'satzklar') {
+      window.sessionStorage.setItem(OWNER_SESSION_KEY, 'true');
+      return true;
+    }
+    return window.sessionStorage.getItem(OWNER_SESSION_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
 
 interface SettingsModalProps {
   open: boolean;
@@ -44,6 +61,11 @@ export function SettingsModal({
   onClose,
 }: SettingsModalProps) {
   const initialSb = loadSupabaseConnection();
+  const [ownerUnlocked, setOwnerUnlocked] = useState<boolean>(() =>
+    detectInitialOwnerAccess()
+  );
+  const [titleTaps, setTitleTaps] = useState(0);
+
   const [keyInput, setKeyInput] = useState(geminiApiKey);
   const [showKey, setShowKey] = useState(false);
   const [keySavedFlash, setKeySavedFlash] = useState(false);
@@ -67,6 +89,31 @@ export function SettingsModal({
   }, [open, onClose]);
 
   if (!open) return null;
+
+  const handleTitleTap = () => {
+    if (ownerUnlocked) return;
+    const next = titleTaps + 1;
+    if (next >= 5) {
+      setOwnerUnlocked(true);
+      setTitleTaps(0);
+      try {
+        window.sessionStorage.setItem(OWNER_SESSION_KEY, 'true');
+      } catch {
+        // Ignore
+      }
+    } else {
+      setTitleTaps(next);
+    }
+  };
+
+  const handleLockOwnerPanel = () => {
+    setOwnerUnlocked(false);
+    try {
+      window.sessionStorage.removeItem(OWNER_SESSION_KEY);
+    } catch {
+      // Ignore
+    }
+  };
 
   const handleSaveKey = () => {
     onSaveGeminiKey(keyInput.trim());
@@ -117,7 +164,7 @@ export function SettingsModal({
       id="settings-modal"
       role="dialog"
       aria-modal="true"
-      aria-label="SatzKlar Settings & Data Portability"
+      aria-label="SatzKlar Progress & Backup"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -125,8 +172,12 @@ export function SettingsModal({
     >
       <div className="paper-elevated w-full max-w-lg rounded-2xl overflow-hidden animate-pop-in">
         <div className="px-5 py-4 border-b border-[var(--border-subtle)] flex items-center justify-between">
-          <h2 className="font-display font-extrabold text-lg text-[var(--ink-primary)]">
-            Studio Settings & Backup
+          <h2
+            id="settings-modal-title"
+            onClick={handleTitleTap}
+            className="font-display font-extrabold text-lg text-[var(--ink-primary)] select-none"
+          >
+            Progress &amp; Backup
           </h2>
           <button
             type="button"
@@ -139,113 +190,13 @@ export function SettingsModal({
         </div>
 
         <div className="p-5 space-y-6 max-h-[82vh] overflow-y-auto">
-          {/* BYOK Gemini API Key */}
-          <section className="space-y-2.5">
-            <div className="flex items-center gap-2">
-              <KeyRound className="w-4 h-4 text-[#D97706]" />
-              <h3 className="font-display font-bold text-sm text-[var(--ink-primary)]">
-                Optional Gemini API Key (AI Sentence Doctor)
-              </h3>
-            </div>
-            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
-              SatzKlar works 100% locally without any API key. Optionally paste a free Gemini API key to unlock deep grammar feedback and natural B1/B2 rewrites in the Sentence Doctor.
-            </p>
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <input
-                  id="input-gemini-key"
-                  type={showKey ? 'text' : 'password'}
-                  value={keyInput}
-                  onChange={(e) => setKeyInput(e.target.value)}
-                  placeholder="AIzaSy..."
-                  className="w-full pr-9 pl-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowKey((s) => !s)}
-                  aria-label={showKey ? 'Hide API key' : 'Show API key'}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--ink-muted)] hover:text-[var(--ink-primary)] cursor-pointer"
-                >
-                  {showKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
-              </div>
-              <button
-                id="btn-save-gemini-key"
-                type="button"
-                onClick={handleSaveKey}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1C1917] text-[#FAF8F5] dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold cursor-pointer shrink-0"
-              >
-                {keySavedFlash ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Saved</span>
-                  </>
-                ) : (
-                  <span>Save</span>
-                )}
-              </button>
-            </div>
-            <p className="flex items-center gap-1.5 text-[11px] text-[var(--ink-muted)]">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#059669] shrink-0" />
-              Stored strictly in your browser’s localStorage — never sent anywhere except Google’s Gemini API when you check a sentence.
-            </p>
-          </section>
-
-          {/* Optional Global Multi-User Live Chat (Supabase) */}
-          <section className="space-y-2.5 pt-4 border-t border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2">
-              <Database className="w-4 h-4 text-[#2563EB]" />
-              <h3 className="font-display font-bold text-sm text-[var(--ink-primary)]">
-                Global Live Chat Room (Optional Supabase DB)
-              </h3>
-            </div>
-            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
-              Connect a free Supabase project (or set keys in <code className="font-mono">src/config/community.ts</code>) to enable real-time worldwide rooms, online learner profiles, and 1-on-1 private DMs.
-            </p>
-            <div className="space-y-2">
-              <input
-                id="input-supabase-url"
-                type="url"
-                value={sbUrlInput}
-                onChange={(e) => setSbUrlInput(e.target.value)}
-                placeholder="https://your-project.supabase.co"
-                className="w-full px-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
-              />
-              <div className="flex gap-2">
-                <input
-                  id="input-supabase-key"
-                  type="password"
-                  value={sbKeyInput}
-                  onChange={(e) => setSbKeyInput(e.target.value)}
-                  placeholder="Supabase public anon key (eyJ...)"
-                  className="flex-1 px-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
-                />
-                <button
-                  id="btn-save-supabase"
-                  type="button"
-                  onClick={handleSaveSupabase}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-semibold cursor-pointer shrink-0"
-                >
-                  {sbSavedFlash ? (
-                    <>
-                      <Check className="w-3.5 h-3.5" />
-                      <span>Saved</span>
-                    </>
-                  ) : (
-                    <span>Connect</span>
-                  )}
-                </button>
-              </div>
-            </div>
-          </section>
-
-          {/* JSON Export / Import */}
-          <section className="space-y-3 pt-4 border-t border-[var(--border-subtle)]">
+          {/* JSON Export / Import (Clean learner-facing backup) */}
+          <section className="space-y-3">
             <h3 className="font-display font-bold text-sm text-[var(--ink-primary)]">
-              Data Portability (JSON Backup)
+              Save &amp; Restore Learning Progress
             </h3>
-            <p className="text-xs text-[var(--ink-secondary)]">
-              Back up your XP, streak, unit mastery, and Mistake Vault or transfer progress to another browser.
+            <p className="text-xs text-[var(--ink-secondary)] leading-relaxed">
+              Your XP, daily streak, completed lessons, Mistake Vault, and A1–B2 Wortschatz memorization are saved automatically in this browser. Export a backup file anytime to transfer your progress to another phone or laptop.
             </p>
             <div className="grid grid-cols-2 gap-2.5">
               <button
@@ -255,7 +206,7 @@ export function SettingsModal({
                 className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:bg-[var(--bg-well)] text-xs sm:text-sm font-semibold text-[var(--ink-primary)] cursor-pointer"
               >
                 <Download className="w-4 h-4 text-[#2563EB]" />
-                <span>Export JSON</span>
+                <span>Export Backup</span>
               </button>
 
               <button
@@ -265,7 +216,7 @@ export function SettingsModal({
                 className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:bg-[var(--bg-well)] text-xs sm:text-sm font-semibold text-[var(--ink-primary)] cursor-pointer"
               >
                 <Upload className="w-4 h-4 text-[#059669]" />
-                <span>Import JSON</span>
+                <span>Restore Backup</span>
               </button>
               <input
                 ref={fileInputRef}
@@ -296,7 +247,7 @@ export function SettingsModal({
                 Reset Learning Progress
               </h3>
               <p className="text-xs text-[var(--ink-muted)]">
-                Clears XP, mastery rings, and Mistake Vault locally.
+                Clears XP, mastery rings, and Mistake Vault on this device.
               </p>
             </div>
             {!confirmReset ? (
@@ -331,6 +282,123 @@ export function SettingsModal({
               </div>
             )}
           </section>
+
+          {/* OWNER-ONLY HIDDEN ADMIN PANEL (Invisible to regular visitors!) */}
+          {ownerUnlocked && (
+            <div
+              id="owner-admin-panel"
+              className="pt-5 border-t-2 border-dashed border-[var(--border-strong)] space-y-5 animate-pop-in"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#D97706]">
+                  <Lock className="w-3.5 h-3.5" />
+                  <span>Owner Admin Settings (Hidden from Users)</span>
+                </span>
+                <button
+                  id="btn-lock-owner-panel"
+                  type="button"
+                  onClick={handleLockOwnerPanel}
+                  className="px-2.5 py-1 rounded-lg bg-[var(--bg-well)] text-[11px] font-semibold text-[var(--ink-secondary)] hover:text-[var(--ink-primary)] cursor-pointer"
+                >
+                  Hide Admin
+                </button>
+              </div>
+
+              {/* Owner Gemini API Key */}
+              <section className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <KeyRound className="w-4 h-4 text-[#D97706]" />
+                  <h3 className="font-display font-bold text-xs sm:text-sm text-[var(--ink-primary)]">
+                    Gemini API Key (AI Sentence Doctor)
+                  </h3>
+                </div>
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <input
+                      id="input-gemini-key"
+                      type={showKey ? 'text' : 'password'}
+                      value={keyInput}
+                      onChange={(e) => setKeyInput(e.target.value)}
+                      placeholder="AIzaSy..."
+                      className="w-full pr-9 pl-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowKey((s) => !s)}
+                      aria-label={showKey ? 'Hide API key' : 'Show API key'}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--ink-muted)] hover:text-[var(--ink-primary)] cursor-pointer"
+                    >
+                      {showKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                  <button
+                    id="btn-save-gemini-key"
+                    type="button"
+                    onClick={handleSaveKey}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1C1917] text-[#FAF8F5] dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold cursor-pointer shrink-0"
+                  >
+                    {keySavedFlash ? (
+                      <>
+                        <Check className="w-3.5 h-3.5" />
+                        <span>Saved</span>
+                      </>
+                    ) : (
+                      <span>Save</span>
+                    )}
+                  </button>
+                </div>
+                <p className="flex items-center gap-1.5 text-[11px] text-[var(--ink-muted)]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#059669] shrink-0" />
+                  Stored strictly in your browser’s localStorage.
+                </p>
+              </section>
+
+              {/* Owner Supabase DB Override */}
+              <section className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <Database className="w-4 h-4 text-[#2563EB]" />
+                  <h3 className="font-display font-bold text-xs sm:text-sm text-[var(--ink-primary)]">
+                    Supabase Backend Connection
+                  </h3>
+                </div>
+                <div className="space-y-2">
+                  <input
+                    id="input-supabase-url"
+                    type="url"
+                    value={sbUrlInput}
+                    onChange={(e) => setSbUrlInput(e.target.value)}
+                    placeholder="https://your-project.supabase.co"
+                    className="w-full px-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
+                  />
+                  <div className="flex gap-2">
+                    <input
+                      id="input-supabase-key"
+                      type="password"
+                      value={sbKeyInput}
+                      onChange={(e) => setSbKeyInput(e.target.value)}
+                      placeholder="Publishable / anon key"
+                      className="flex-1 px-3 py-2 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] focus:border-[#2563EB] focus:outline-none font-mono text-xs text-[var(--ink-primary)]"
+                    />
+                    <button
+                      id="btn-save-supabase"
+                      type="button"
+                      onClick={handleSaveSupabase}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-semibold cursor-pointer shrink-0"
+                    >
+                      {sbSavedFlash ? (
+                        <>
+                          <Check className="w-3.5 h-3.5" />
+                          <span>Saved</span>
+                        </>
+                      ) : (
+                        <span>Connect</span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -3,11 +3,8 @@ import {
   AlertOctagon,
   ArrowLeft,
   Ban,
-  Check,
   CheckCircle2,
   Coffee,
-  Copy,
-  Database,
   Flag,
   Globe,
   Hash,
@@ -29,7 +26,7 @@ import {
   X,
 } from 'lucide-react';
 import type { CEFRLevel, SentenceAnalysisResult } from '../../types/grammar';
-import { COMMUNITY_CONFIG, SUPABASE_SQL_SCHEMA } from '../../config/community';
+import { COMMUNITY_CONFIG } from '../../config/community';
 import { useLanguage } from '../../i18n/useLanguage';
 import { analyzeSentenceLocally } from '../../utils/sentenceDoctor';
 import { AudioButton } from '../drill/AudioButton';
@@ -109,7 +106,6 @@ function formatClock(iso: string): string {
 }
 
 export function VirtualChatRoom({
-  onOpenSettings,
   supabaseVersion = 0,
 }: VirtualChatRoomProps) {
   const { t } = useLanguage();
@@ -171,10 +167,6 @@ export function VirtualChatRoom({
   } | null>(null);
   const [reportReason, setReportReason] = useState<string>(REPORT_REASONS[0]);
   const [reportConfirmation, setReportConfirmation] = useState<string | null>(null);
-
-  // Setup SQL copy toggle
-  const [showSetupGuide, setShowSetupGuide] = useState(false);
-  const [copiedSql, setCopiedSql] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const channelRef = useRef<BroadcastChannel | null>(null);
@@ -465,16 +457,6 @@ export function VirtualChatRoom({
     [learners, blockedUsers]
   );
 
-  const handleCopySql = async () => {
-    try {
-      await navigator.clipboard.writeText(SUPABASE_SQL_SCHEMA);
-      setCopiedSql(true);
-      window.setTimeout(() => setCopiedSql(false), 2000);
-    } catch {
-      // Ignore clipboard error
-    }
-  };
-
   // --- ENTRY GATE: Friendly Guest or Simple Email Profile Setup ---
   if (!profile) {
     return (
@@ -712,21 +694,10 @@ export function VirtualChatRoom({
               <h1 className="font-display font-extrabold text-lg sm:text-xl text-[var(--ink-primary)]">
                 {t.chatTitle}
               </h1>
-              {liveGlobalEnabled ? (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-50 text-[#047857] border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800">
-                  <Globe className="w-3 h-3" />
-                  <span>GLOBAL LIVE</span>
-                </span>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setShowSetupGuide((s) => !s)}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-50 text-[#B45309] border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800 cursor-pointer hover:opacity-90"
-                >
-                  <Database className="w-3 h-3 shrink-0" />
-                  <span>LOCAL MODE · Connect Global DB</span>
-                </button>
-              )}
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-50 text-[#047857] border border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800">
+                <Globe className="w-3 h-3" />
+                <span>{liveGlobalEnabled ? 'GLOBAL LIVE' : 'LIVE LOUNGE'}</span>
+              </span>
             </div>
             <p className="text-xs text-[var(--ink-secondary)] mt-0.5">
               Protected by Anti-Bullying & Anti-Cybercrime Guard · General + A1–B2 Rooms + 1-on-1 Private Chat
@@ -1429,65 +1400,6 @@ export function VirtualChatRoom({
         </aside>
       </div>
         </>
-      )}
-
-      {/* Expandable Global Multi-User Supabase Setup Guide (Only shown when user clicks or not yet configured) */}
-      {showSetupGuide && (
-        <div className="paper-card rounded-2xl p-5 space-y-3 border-blue-200 dark:border-blue-900">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h3 className="font-display font-bold text-base text-[var(--ink-primary)] flex items-center gap-2">
-                <Database className="w-4 h-4 text-[#2563EB]" />
-                <span>Activate Free Global Live Chat (2-Minute Supabase Setup)</span>
-              </h3>
-              <p className="text-xs text-[var(--ink-secondary)] mt-0.5">
-                Right now the lounge runs locally in your browser so you can test every feature immediately. To connect real learners worldwide on <strong>satzklar.my.id</strong> (100% free tier):
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowSetupGuide(false)}
-              className="p-1 text-[var(--ink-muted)] hover:text-[var(--ink-primary)] cursor-pointer"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-
-          <ol className="text-xs text-[var(--ink-secondary)] space-y-1.5 list-decimal pl-5">
-            <li>
-              Create a free project at <strong>supabase.com</strong> (takes ~1 minute).
-            </li>
-            <li>
-              Open <strong>SQL Editor</strong> in Supabase, paste the SQL below, and click <strong>Run</strong> (includes RLS + server-side anti-link rules!).
-            </li>
-            <li>
-              Copy your <strong>Project URL</strong> &amp; <strong>anon public key</strong> into{' '}
-              <code className="font-mono">src/config/community.ts</code> (for all visitors) or paste them into{' '}
-              <button
-                type="button"
-                onClick={onOpenSettings}
-                className="underline font-semibold text-[#2563EB] dark:text-[#60A5FA] cursor-pointer"
-              >
-                Studio Settings
-              </button>{' '}
-              to test immediately!
-            </li>
-          </ol>
-
-          <div className="relative">
-            <pre className="p-3 rounded-xl bg-[var(--bg-well)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--ink-secondary)] overflow-x-auto max-h-44">
-              {SUPABASE_SQL_SCHEMA}
-            </pre>
-            <button
-              type="button"
-              onClick={() => void handleCopySql()}
-              className="absolute top-2 right-2 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[11px] font-semibold text-[var(--ink-primary)] cursor-pointer shadow-xs"
-            >
-              {copiedSql ? <Check className="w-3.5 h-3.5 text-[#059669]" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedSql ? 'Copied SQL' : 'Copy SQL'}</span>
-            </button>
-          </div>
-        </div>
       )}
 
       {/* Tasteful Creator Support / Tip Card */}

@@ -184,13 +184,13 @@ export function TopNav({
             <span className="hidden xl:inline whitespace-nowrap">{t.cheatSheet}</span>
           </button>
 
-          {/* Settings */}
+          {/* Progress & Backup */}
           <button
             id="btn-settings"
             type="button"
             onClick={onOpenSettings}
-            title="Settings, Global Chat DB, Gemini BYOK & Backup"
-            aria-label="Open Settings"
+            title="Progress & Backup"
+            aria-label="Open Progress and Backup"
             className="p-2 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--ink-secondary)] hover:text-[var(--ink-primary)] hover:border-[var(--border-strong)] transition-colors cursor-pointer"
           >
             <Settings className="w-4 h-4" />
