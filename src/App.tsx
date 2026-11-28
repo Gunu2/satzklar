@@ -90,6 +90,25 @@ export function App() {
     }
   }, [progress]);
 
+  // Send clean virtual page_view events to Google Tag (GTM-PMQPH76R / GA4) on tab switch
+  useEffect(() => {
+    const win = window as Window & {
+      dataLayer?: Array<Record<string, unknown>>;
+      gtag?: (...args: unknown[]) => void;
+    };
+    const path = activeTab === 'roadmap' ? '/' : `/${activeTab}`;
+    win.dataLayer = win.dataLayer || [];
+    win.dataLayer.push({
+      event: 'virtual_pageview',
+      page_path: path,
+      page_title: `SatzKlar · ${activeTab}`,
+    });
+    win.gtag?.('event', 'page_view', {
+      page_path: path,
+      page_title: `SatzKlar · ${activeTab}`,
+    });
+  }, [activeTab]);
+
   const savedMistakeIds = useMemo(
     () => new Set(Object.keys(progress.mistakes)),
     [progress.mistakes]
